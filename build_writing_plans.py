@@ -167,7 +167,7 @@ def main() -> int:
     <header class="site-header">
       <nav class="site-nav" aria-label="Site">
         <a href="../index.html" class="site-nav__brand">From prompt to prod</a>
-        <a href="verify/index.html" class="site-nav__link" aria-current="page">Self-check</a>
+        <a href="./" class="site-nav__link" aria-current="page">Self-check</a>
         <a href="{esc_html(PDF_URL)}" class="site-nav__link">Slides (PDF)</a>
         <a href="https://github.com/vmandic/from-prompt-to-prod" class="site-nav__link">Source</a>
       </nav>
