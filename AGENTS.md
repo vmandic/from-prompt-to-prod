@@ -4,7 +4,7 @@
 
 - **Talk materials:** PDF + Keynote at repo root; outline and links in [`README.md`](README.md).
 - **Self-check rubric (agent prompt):** [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md) — A–K dimensions vs the talk; materials-only repos may show N/A for some file-based rows.
-- **Static site (GitHub Pages):** source lives in **`docs/`**. With Pages set to publish from **`/docs` on `main`**, the **public site root** is `https://vmandic.github.io/from-prompt-to-prod/` — there is **no** `/docs` segment in the URL.
+- **Static site (GitHub Pages):** source lives in **`docs/`**. With Pages set to publish from **`/docs` on `main`**, the **public site root** is `https://vmandic.github.io/from-prompt-to-prod/` — there is **no** `/docs` segment in the URL. **Internal links use root-relative paths** (`/from-prompt-to-prod/...`) so nav and CSS work whether or not the URL has a trailing slash (GitHub project Pages quirk); local `file://` or a bare `http.server` at repo root will not match that base unless you fake the path.
 
 ## Conventions we settled on in repo work
 

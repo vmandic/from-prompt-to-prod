@@ -23,6 +23,10 @@ OUT_PATH = ROOT / "docs" / "verify" / "index.html"
 SITE_URL = os.environ.get(
     "SITE_URL", "https://vmandic.github.io/from-prompt-to-prod"
 ).rstrip("/")
+# Project Pages base path (leading slash) — use for in-site links so /repo vs /repo/ does not break relatives
+SITE_BASE = os.environ.get("SITE_BASE", "/from-prompt-to-prod").rstrip("/") or "/from-prompt-to-prod"
+if not SITE_BASE.startswith("/"):
+    SITE_BASE = "/" + SITE_BASE
 
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
@@ -126,7 +130,8 @@ def main() -> int:
         count=1,
         flags=re.MULTILINE,
     )
-    body = body.replace('href="../README.md"', 'href="../index.html"')
+    body = body.replace('href="../README.md"', f'href="{SITE_BASE}/"')
+    body = body.replace('href="../index.html"', f'href="{SITE_BASE}/"')
     body = body.replace('href="../from-promt-to-prod-v2.pdf"', f'href="{PDF_URL}"')
     # Source links use "a–K" (en dash); ToC extension slug ends with "ak"
     body = re.sub(
@@ -158,16 +163,16 @@ def main() -> int:
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/base.css" />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="{SITE_BASE}/assets/base.css" />
+  <link rel="icon" href="{SITE_BASE}/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="site-shell site-shell--with-toc">
     <header class="site-header">
       <nav class="site-nav" aria-label="Site">
-        <a href="../index.html" class="site-nav__brand">From prompt to prod</a>
-        <a href="./" class="site-nav__link" aria-current="page">Self-check</a>
+        <a href="{SITE_BASE}/" class="site-nav__brand">From prompt to prod</a>
+        <a href="{SITE_BASE}/verify/" class="site-nav__link" aria-current="page">Self-check</a>
         <a href="{esc_html(PDF_URL)}" class="site-nav__link">Slides (PDF)</a>
         <a href="https://github.com/vmandic/from-prompt-to-prod" class="site-nav__link">Source</a>
       </nav>
