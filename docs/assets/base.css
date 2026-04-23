@@ -190,10 +190,7 @@ a:focus-visible {
 }
 
 @media (min-width: 64em) {
-  /*
-   * Must set height (not only max-height): with flex children, max-height alone leaves
-   * used height ≈ min-content (~0), so .site-toc-scroll collapses and only a sliver shows.
-   */
+  /* Sticky height + one frame on the aside; list scrolls inside .site-toc-scroll */
   .site-toc-wrap {
     --site-toc-available: calc(
       100vh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
@@ -212,10 +209,9 @@ a:focus-visible {
     max-height: var(--site-toc-available);
     box-sizing: border-box;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    margin: 5px 0;
+    padding: 0;
     background: var(--color-surface);
-    box-shadow: var(--shadow);
-    padding: 0.5rem;
   }
 
   @supports (height: 100dvh) {
@@ -236,25 +232,14 @@ a:focus-visible {
     }
   }
 
-  /* Scroller only — card frame is the aside */
   .site-toc-scroll {
     flex: 1 1 0;
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-    padding: 0.25rem 0.5rem 0.25rem 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
-  }
-
-  .site-toc-scroll .on-this-page {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
   }
 
   .site-toc-scroll::-webkit-scrollbar {
@@ -266,11 +251,8 @@ a:focus-visible {
 .on-this-page {
   font-size: 0.8rem;
   line-height: 1.4;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 0.75rem 0.5rem 0.75rem 0;
-  background: var(--color-surface);
-  box-shadow: var(--shadow);
+  margin: 0;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .on-this-page__title {
