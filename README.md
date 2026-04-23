@@ -12,8 +12,6 @@ This repo holds the **slides** so you can read them at your own pace:
 - [`from-promt-to-prod-v2.pdf`](from-promt-to-prod-v2.pdf) — PDF export (easy to skim and search)
 - [`from-promt-to-prod-v2.key`](from-promt-to-prod-v2.key) — Keynote source (if you use Keynote)
 
-**Regenerate the verify HTML** after editing [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md): with Python 3 and deps (`pip install -r requirements.txt` in a venv), run `python3 build_writing_plans.py` or `npm run build:site`.
-
 ---
 
 ## What the talk covers
