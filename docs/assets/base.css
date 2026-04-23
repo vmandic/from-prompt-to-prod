@@ -210,7 +210,12 @@ a:focus-visible {
     overflow: hidden;
     height: var(--site-toc-available);
     max-height: var(--site-toc-available);
-    padding: 0.5rem 0 0;
+    box-sizing: border-box;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
   }
 
   @supports (height: 100dvh) {
@@ -231,18 +236,14 @@ a:focus-visible {
     }
   }
 
-  /* Card chrome lives here (not on nav): border matches the scrollport; nav is long and scrolls inside */
+  /* Scroller only — card frame is the aside */
   .site-toc-scroll {
     flex: 1 1 0;
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-surface);
-    box-shadow: var(--shadow);
-    padding: 0.75rem 0.5rem 0.75rem 0;
+    padding: 0.25rem 0.5rem 0.25rem 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
