@@ -1,5 +1,4 @@
-# GitHub Pages: when the publish source is the /docs folder on main,
-# these files are served from the site root (no /docs/ in the URL).
+# Served as site root when Pages uses the repo /docs folder.
 User-agent: *
 Allow: /
 

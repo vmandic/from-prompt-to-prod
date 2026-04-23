@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
-"""
-Build docs/verify/index.html from src/verify-your-agentic-workflows.md.
-
-Published site (GitHub Pages “/docs” folder): https://<user>.github.io/<repo>/
-— the docs/ directory is the site root; “docs” does not appear in public URLs.
-
-- Markdown → HTML with tables, fenced code, and heading ids (ToC extension).
-- Raw HTML in the source is not enabled; use trusted markdown only.
-- Post-process: strip duplicate h1, fix PDF/README links, build sidebar ToC.
-"""
+"""Build docs/verify/index.html from src/verify-your-agentic-workflows.md (Markdown + ToC, trusted source only)."""
 
 from __future__ import annotations
 
