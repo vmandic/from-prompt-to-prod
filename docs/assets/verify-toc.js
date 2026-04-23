@@ -39,11 +39,25 @@
     }
   }
 
+  /**
+   * Y-offset from the top of the viewport: the “reading line” for scroll-spy and hash scroll.
+   * Must be >= the resolved scroll-margin on `.md-body` headings (base.css) or the sticky header
+   * wins and the *previous* section stays highlighted/“active” after clicking the ToC.
+   */
   function readHeaderOffset() {
     const h = document.querySelector(".site-header");
-    if (!h) return 72;
-    // Same source as syncTocLayoutVars (px height) + gutter to align with scroll spy vs sticky bar
-    return Math.ceil(h.getBoundingClientRect().height) + SCROLL_SPY_GUTTER_PX;
+    const headerH = h ? Math.ceil(h.getBoundingClientRect().height) : 72;
+    let marginPx = 0;
+    const sample = sections[0]?.el;
+    if (sample) {
+      const sm = getComputedStyle(sample).scrollMarginTop;
+      if (sm) marginPx = Math.ceil(parseFloat(sm) || 0);
+    }
+    if (!marginPx) {
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      marginPx = Math.ceil(5 * rem);
+    }
+    return Math.max(headerH + SCROLL_SPY_GUTTER_PX, marginPx);
   }
 
   let activeId = "";
@@ -73,11 +87,11 @@
   }
 
   function computeActiveFromScroll() {
-    const y = window.scrollY + readHeaderOffset();
+    const ro = readHeaderOffset();
     let current = sections[0];
     for (const s of sections) {
-      const top = s.el.getBoundingClientRect().top + window.pageYOffset;
-      if (top <= y) current = s;
+      // Viewport space: last heading whose top is at/above the spy line (same as document logic).
+      if (s.el.getBoundingClientRect().top <= ro) current = s;
     }
     setActive(current.id);
   }
