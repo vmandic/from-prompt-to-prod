@@ -24,7 +24,9 @@ class TestGhpagesBuild(unittest.TestCase):
 
     def test_verify_page_markers(self) -> None:
         text = VERIFY_HTML.read_text(encoding="utf-8")
-        self.assertIn("verify-toc.js", text)
+        self.assertIn("verify-toc.js?v=", text)
+        self.assertIn("base.css?v=", text)
+        self.assertIn("site-toc-scroll", text)
         self.assertIn("site-shell--with-toc", text)
         self.assertIn('id="main"', text)
 

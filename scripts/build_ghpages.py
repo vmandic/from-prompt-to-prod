@@ -28,6 +28,9 @@ SITE_BASE = os.environ.get("SITE_BASE", "/from-prompt-to-prod").rstrip("/") or "
 if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
+# Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "3")
+
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
 DESCRIPTION = (
@@ -166,9 +169,9 @@ def main() -> int:
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{SITE_BASE}/assets/base.css" />
+  <link rel="stylesheet" href="{SITE_BASE}/assets/base.css?v={ASSET_QUERY}" />
   <link rel="icon" href="{SITE_BASE}/favicon.svg" type="image/svg+xml" />
-  <script src="{SITE_BASE}/assets/verify-toc.js" defer></script>
+  <script src="{SITE_BASE}/assets/verify-toc.js?v={ASSET_QUERY}" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -182,7 +185,9 @@ def main() -> int:
       </nav>
     </header>
     <aside class="site-toc-wrap" id="site-toc">
-      {toc_nav}
+      <div class="site-toc-scroll">
+        {toc_nav}
+      </div>
     </aside>
     <main id="main" class="site-main site-main--verify">
       <article class="prose">

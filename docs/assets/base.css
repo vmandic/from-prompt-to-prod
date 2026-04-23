@@ -20,6 +20,8 @@
   --site-toc-sticky-top: 3.5rem;
   /* Gap from bottom of viewport; env() avoids notched devices clipping the ToC */
   --site-toc-bottom-gap: 0.75rem;
+  /* Space below .on-this-page inside the scrollport so border + box-shadow are not clipped */
+  --site-toc-scroll-pad: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -190,17 +192,17 @@ a:focus-visible {
 }
 
 @media (min-width: 64em) {
+  /* Outer: max height + hidden overflow (flex will not “grow” past it); inner scrolls */
   .site-toc-wrap {
-    display: block;
+    display: flex;
+    flex-direction: column;
     grid-area: toc;
     position: sticky;
     top: var(--site-toc-sticky-top);
     z-index: 1;
     align-self: start;
-    /* Let grid pass a bounded height so overflow stays inside (see max-height) */
     min-height: 0;
-    /* Must not use raw vh/97vh alone: the ToC already sits *below* --site-toc-sticky-top.
-       Height = visible viewport minus (top + gap) — see verify-toc.js for measured header. */
+    overflow: hidden;
     max-height: calc(
       100vh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
         env(safe-area-inset-bottom, 0px)
@@ -209,17 +211,11 @@ a:focus-visible {
       100dvh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
         env(safe-area-inset-bottom, 0px)
     );
-    overflow-y: auto;
-    overflow-x: hidden;
-    /* Scrollable but no visible scrollbar (wheel / touch / keyboard still work) */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     padding: 0.5rem 0 0;
   }
 
   @supports (height: 100svh) {
     .site-toc-wrap {
-      /* svh: smallest viewports — avoids “vh taller than the visible window” overflow */
       max-height: calc(
         100svh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
           env(safe-area-inset-bottom, 0px)
@@ -227,7 +223,22 @@ a:focus-visible {
     }
   }
 
-  .site-toc-wrap::-webkit-scrollbar {
+  .site-toc-scroll {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Inset + margin on nav: keeps bottom border, radius, and box-shadow off the scroll clip */
+    padding-bottom: var(--site-toc-scroll-pad);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .site-toc-scroll .on-this-page {
+    margin-bottom: 0.5rem;
+  }
+
+  .site-toc-scroll::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
