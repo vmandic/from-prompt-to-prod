@@ -330,28 +330,38 @@ a:focus-visible {
 }
 
 @media (prefers-color-scheme: dark) {
-  .actions a {
+  .actions li:not(.actions__secondary) a {
     color: #0d160f;
   }
 }
 
-.actions a:hover,
-.actions a:focus-visible {
+/* Primary (filled) CTA: brighten on hover; keep light text on dark green */
+.actions li:not(.actions__secondary) a:hover,
+.actions li:not(.actions__secondary) a:focus-visible {
   filter: brightness(1.08);
   color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
-  .actions a:hover,
-  .actions a:focus-visible {
+  .actions li:not(.actions__secondary) a:hover,
+  .actions li:not(.actions__secondary) a:focus-visible {
     color: #0d160f;
   }
 }
 
+/* Outline buttons: never force white text (was unreadable on light fill) */
 .actions__secondary a {
   background: transparent;
   color: var(--color-link);
   border-color: var(--color-border);
+}
+
+.actions li.actions__secondary a:hover,
+.actions li.actions__secondary a:focus-visible {
+  filter: none;
+  color: var(--color-link-hover);
+  background: color-mix(in srgb, var(--color-link) 12%, var(--color-bg));
+  border-color: var(--color-accent);
 }
 
 .figure-grid {
