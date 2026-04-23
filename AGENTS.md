@@ -9,7 +9,8 @@
 ## Conventions we settled on in repo work
 
 - **Do not** add a top-level folder named `writing-plans` for the site — that was a **planning-skill** label, not a product path. The published site is **`docs/`**.
-- **Regenerate** [`docs/verify/index.html`](docs/verify/index.html) from the markdown: `python3 build_ghpages.py` (needs `pip install -r requirements.txt`), or `npm run build:site`. Commit the HTML if you change the `.md` source and want the live site to match.
+- **Regenerate** [`docs/verify/index.html`](docs/verify/index.html) from the markdown: `python3 scripts/build_ghpages.py` (needs `pip install -r requirements.txt`, or a project **`.venv`** with `markdown` installed), or `npm run build:site`. Commit the HTML if you change the `.md` source and want the live site to match. **Smoke test:** `python3 -m unittest discover -s tests -v` (same Python as the build).
+- **Run the site locally:** from repo root, `python3 scripts/serve_site.py` — serves `docs/` under the same `/from-prompt-to-prod/` path as production and opens the browser. Use `PORT=9000` (or another free port) if the default (`8765`) is taken. Press Ctrl+C to stop.
 - **Slides on the site:** PDF is linked via **raw** `main` on GitHub (repo root is not inside `docs/`-only deploy).
 - **README:** keep it for **readers** of the talk; avoid long “how to build the site” blocks unless the owner asks.
 - Shields / badges: the owner preferred a **single website** badge; keep README minimal unless told otherwise.

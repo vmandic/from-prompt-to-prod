@@ -16,6 +16,10 @@
   --shadow: 0 1px 3px rgba(26, 26, 24, 0.08);
   --focus: 2px solid var(--color-accent-2);
   --prose: 70ch;
+  /* Self-check: .site-toc-wrap { top } — verify-toc.js overwrites with measured header (px) */
+  --site-toc-sticky-top: 3.5rem;
+  /* Gap from bottom of viewport; env() avoids notched devices clipping the ToC */
+  --site-toc-bottom-gap: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -155,9 +159,9 @@ a:focus-visible {
 .site-shell--with-toc {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  /* Mobile / tablet: no side ToC (avoids touch-scroll conflicts; in-page hash links still work) */
   grid-template-areas:
     "header"
-    "toc"
     "main";
   max-width: 72rem;
   margin: 0 auto;
@@ -180,23 +184,47 @@ a:focus-visible {
 }
 
 .site-toc-wrap {
-  grid-area: toc;
+  /* Hidden on small viewports (must match verify-toc.js min-width: 64em) */
+  display: none;
   padding: 0 1.25rem;
 }
 
 @media (min-width: 64em) {
   .site-toc-wrap {
+    display: block;
+    grid-area: toc;
     position: sticky;
-    top: 3.5rem;
+    top: var(--site-toc-sticky-top);
     z-index: 1;
     align-self: start;
-    max-height: calc(100vh - 4rem);
+    /* Let grid pass a bounded height so overflow stays inside (see max-height) */
+    min-height: 0;
+    /* Must not use raw vh/97vh alone: the ToC already sits *below* --site-toc-sticky-top.
+       Height = visible viewport minus (top + gap) — see verify-toc.js for measured header. */
+    max-height: calc(
+      100vh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
+        env(safe-area-inset-bottom, 0px)
+    );
+    max-height: calc(
+      100dvh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
+        env(safe-area-inset-bottom, 0px)
+    );
     overflow-y: auto;
     overflow-x: hidden;
     /* Scrollable but no visible scrollbar (wheel / touch / keyboard still work) */
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 0.5rem 0 0;
+  }
+
+  @supports (height: 100svh) {
+    .site-toc-wrap {
+      /* svh: smallest viewports — avoids “vh taller than the visible window” overflow */
+      max-height: calc(
+        100svh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
+          env(safe-area-inset-bottom, 0px)
+      );
+    }
   }
 
   .site-toc-wrap::-webkit-scrollbar {
@@ -595,10 +623,6 @@ figure figcaption {
     padding: 0.75rem 1.5rem;
   }
 
-  .site-toc-wrap {
-    padding: 0 1.5rem;
-  }
-
   .site-main {
     padding: 1.25rem 1.5rem 0;
   }
@@ -626,10 +650,6 @@ figure figcaption {
 
   .md-body pre {
     line-height: 1.6;
-  }
-
-  .on-this-page {
-    padding: 0.9rem 0.65rem 0.9rem 0;
   }
 
   .actions {

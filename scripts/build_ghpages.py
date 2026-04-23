@@ -16,7 +16,7 @@ from markdown.extensions.sane_lists import SaneListExtension
 from markdown.extensions.tables import TableExtension
 from markdown.extensions.toc import TocExtension
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 MD_PATH = ROOT / "src" / "verify-your-agentic-workflows.md"
 OUT_PATH = ROOT / "docs" / "verify" / "index.html"
 
@@ -92,6 +92,9 @@ def build_toc_nav(toc: list[tuple[int, str, str]]) -> str:
         "  <ol>",
     ]
     for level, hid, text in toc:
+        # id="..." in body comes from the same build; only reject pathological ids
+        if '"' in hid or "<" in hid or ">" in hid or not hid.strip():
+            continue
         lines.append(
             f'    <li class="on-this-page__item on-this-page__item--h{level}">'
             f'<a href="#{hid}">{esc_html(text)}</a></li>'
