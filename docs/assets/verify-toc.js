@@ -7,6 +7,28 @@
 (function () {
   "use strict";
 
+  /**
+   * Mobile “pivot” tables: set data-label on each body cell from the thead row so CSS can stack rows.
+   * Runs for all .md-body tables with a single header row; no effect if thead is missing.
+   */
+  (function initMdResponsiveTables() {
+    function normText(s) {
+      return String(s).replace(/\s+/g, " ").trim();
+    }
+    for (const table of document.querySelectorAll(".md-body table")) {
+      const headerRow = table.querySelector("thead tr");
+      if (!headerRow) continue;
+      const thEls = headerRow.querySelectorAll("th");
+      if (thEls.length === 0) continue;
+      const labels = Array.from(thEls, (th) => normText(th.textContent));
+      for (const tr of table.querySelectorAll("tbody tr")) {
+        tr.querySelectorAll("td").forEach((td, i) => {
+          if (i < labels.length) td.setAttribute("data-label", labels[i]);
+        });
+      }
+    }
+  })();
+
   const mql = window.matchMedia("(min-width: 64em)");
   const nav = document.querySelector("#site-toc .on-this-page");
   if (!nav) return;

@@ -635,6 +635,13 @@ figure figcaption {
     padding: 0.75rem 1.5rem;
   }
 
+  /* Title alone on the first line; all nav links on the next line */
+  .site-nav__brand {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-right: 0;
+  }
+
   .site-main {
     padding: 1.25rem 1.5rem 0;
   }
@@ -662,6 +669,62 @@ figure figcaption {
 
   .md-body pre {
     line-height: 1.6;
+  }
+
+  /*
+   * Responsive tables: stack each tbody row as a “card” with column labels (data-label from verify-toc.js).
+   * :has() keeps horizontal scroll for tables that did not get labels.
+   */
+  .md-body table:has(tbody td[data-label]) {
+    overflow-x: visible;
+    border: none;
+    background: transparent;
+  }
+
+  .md-body table:has(tbody td[data-label]) thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .md-body table:has(tbody td[data-label]) tbody {
+    display: block;
+  }
+
+  .md-body table:has(tbody td[data-label]) tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow);
+  }
+
+  .md-body table:has(tbody td[data-label]) td {
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .md-body table:has(tbody td[data-label]) tbody tr td:last-child {
+    border-bottom: none;
+  }
+
+  .md-body table:has(tbody td[data-label]) td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.3rem;
   }
 
   .actions {
@@ -701,5 +764,43 @@ figure figcaption {
 
   .site-toc-wrap {
     display: none;
+  }
+
+  /* Restore normal table layout for printing (stacked “pivot” is screen-only) */
+  .md-body table {
+    display: table;
+    overflow: visible;
+  }
+
+  .md-body table:has(tbody td[data-label]) thead {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  .md-body table thead {
+    display: table-header-group;
+  }
+
+  .md-body table tbody {
+    display: table-row-group;
+  }
+
+  .md-body table tr {
+    display: table-row;
+  }
+
+  .md-body table th,
+  .md-body table td {
+    display: table-cell;
+  }
+
+  .md-body table td::before {
+    content: none !important;
   }
 }
