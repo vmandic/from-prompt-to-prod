@@ -192,8 +192,15 @@ a:focus-visible {
 }
 
 @media (min-width: 64em) {
-  /* Outer: max height + hidden overflow (flex will not “grow” past it); inner scrolls */
+  /*
+   * Must set height (not only max-height): with flex children, max-height alone leaves
+   * used height ≈ min-content (~0), so .site-toc-scroll collapses and only a sliver shows.
+   */
   .site-toc-wrap {
+    --site-toc-available: calc(
+      100vh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
+        env(safe-area-inset-bottom, 0px)
+    );
     display: flex;
     flex-direction: column;
     grid-area: toc;
@@ -203,20 +210,23 @@ a:focus-visible {
     align-self: start;
     min-height: 0;
     overflow: hidden;
-    max-height: calc(
-      100vh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
-        env(safe-area-inset-bottom, 0px)
-    );
-    max-height: calc(
-      100dvh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
-        env(safe-area-inset-bottom, 0px)
-    );
+    height: var(--site-toc-available);
+    max-height: var(--site-toc-available);
     padding: 0.5rem 0 0;
+  }
+
+  @supports (height: 100dvh) {
+    .site-toc-wrap {
+      --site-toc-available: calc(
+        100dvh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
+          env(safe-area-inset-bottom, 0px)
+      );
+    }
   }
 
   @supports (height: 100svh) {
     .site-toc-wrap {
-      max-height: calc(
+      --site-toc-available: calc(
         100svh - var(--site-toc-sticky-top) - var(--site-toc-bottom-gap) -
           env(safe-area-inset-bottom, 0px)
       );
