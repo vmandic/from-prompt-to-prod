@@ -2,6 +2,6 @@
   "name": "from-prompt-to-prod",
   "private": true,
   "scripts": {
-    "build:site": "python3 build_writing_plans.py"
+    "build:site": "python3 build_ghpages.py"
   }
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build docs/verify/index.html from src/verify-your-agentic-workflows.md (Markdown + ToC, trusted source only)."""
+"""Build GitHub Pages output: docs/verify/index.html from verify-your-agentic-workflows.md."""
 
 from __future__ import annotations
 

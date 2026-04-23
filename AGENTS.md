@@ -9,7 +9,7 @@
 ## Conventions we settled on in repo work
 
 - **Do not** add a top-level folder named `writing-plans` for the site — that was a **planning-skill** label, not a product path. The published site is **`docs/`**.
-- **Regenerate** [`docs/verify/index.html`](docs/verify/index.html) from the markdown: `python3 build_writing_plans.py` (needs `pip install -r requirements.txt`), or `npm run build:site`. Commit the HTML if you change the `.md` source and want the live site to match.
+- **Regenerate** [`docs/verify/index.html`](docs/verify/index.html) from the markdown: `python3 build_ghpages.py` (needs `pip install -r requirements.txt`), or `npm run build:site`. Commit the HTML if you change the `.md` source and want the live site to match.
 - **Slides on the site:** PDF is linked via **raw** `main` on GitHub (repo root is not inside `docs/`-only deploy).
 - **README:** keep it for **readers** of the talk; avoid long “how to build the site” blocks unless the owner asks.
 - Shields / badges: the owner preferred a **single website** badge; keep README minimal unless told otherwise.
