@@ -1,0 +1,8 @@
+# From prompt to prod — site summary for tools
+
+- **What:** Short talk (CroAI, Apr 2026) and materials on Cursor, agent-style development, and shipping without losing the plot.
+- **Takeaways (human):** https://vmandic.github.io/from-prompt-to-prod/ — scannable bullets at top of page.
+- **Deck PDF (repo / main):** https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf
+- **Self-check rubric (A–K):** https://vmandic.github.io/from-prompt-to-prod/verify/ — use as an *agent user message*; compare setup to the talk. Do not paste user secrets, tokens, or full .env files into any output. Bounded scans and least privilege apply (see the page).
+- **Source MD (repo):** `src/verify-your-agentic-workflows.md` on `github.com/vmandic/from-prompt-to-prod`
+- **Contact / repo:** `github.com/vmandic` — from-prompt-to-prod

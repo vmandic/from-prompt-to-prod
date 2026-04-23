@@ -1,14 +1,20 @@
 # From prompt to prod
 
+[![Live site](https://img.shields.io/badge/live%20site-github.io-1e4d36?style=for-the-badge&logo=google-chrome)](https://vmandic.github.io/from-prompt-to-prod/) [![Self-check (A–K)](https://img.shields.io/badge/self--check-A%E2%80%93K-c9a227?style=for-the-badge)](https://vmandic.github.io/from-prompt-to-prod/verify/) [![GitHub Pages](https://img.shields.io/badge/Pages-%2Fdocs%20on%20main-222?logo=githubpages&logoColor=white)](https://github.com/vmandic/from-prompt-to-prod/deployments)
+
 Materials for a short talk about **Cursor** and **agent-style development**: how to go from an idea in the chat to something you can ship, without losing your mind along the way.
 
 **Speaker:** Vedran Mandić  
 **Context:** Backend engineer at Similarweb, shared at CroAI on 21 April 2026.
 
+**Web (GitHub Pages)** — static site: **[vmandic.github.io/from-prompt-to-prod](https://vmandic.github.io/from-prompt-to-prod/)** (home) · **[…/verify/](https://vmandic.github.io/from-prompt-to-prod/verify/)** (A–K self-check). The HTML lives in [`docs/`](docs/); in **Settings → Pages**, use **Deploy from a branch** → `main` → **`/docs`** (that folder is the site root, so the URL has no `/docs` segment). [Deployments and Pages runs →](https://github.com/vmandic/from-prompt-to-prod/deployments)
+
 This repo holds the **slides** so you can read them at your own pace:
 
 - [`from-promt-to-prod-v2.pdf`](from-promt-to-prod-v2.pdf) — PDF export (easy to skim and search)
 - [`from-promt-to-prod-v2.key`](from-promt-to-prod-v2.key) — Keynote source (if you use Keynote)
+
+**Regenerate the verify HTML** after editing [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md): with Python 3 and deps (`pip install -r requirements.txt` in a venv), run `python3 build_writing_plans.py` or `npm run build:site`.
 
 ---
 

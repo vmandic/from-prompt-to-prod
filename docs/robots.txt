@@ -1,0 +1,6 @@
+# GitHub Pages: when the publish source is the /docs folder on main,
+# these files are served from the site root (no /docs/ in the URL).
+User-agent: *
+Allow: /
+
+Sitemap: https://vmandic.github.io/from-prompt-to-prod/sitemap.xml

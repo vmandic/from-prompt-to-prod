@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>From prompt to prod — CroAI 2026</title>
+  <meta name="description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K) from a CroAI 2026 talk." />
+  <link rel="canonical" href="https://vmandic.github.io/from-prompt-to-prod/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="From prompt to prod — CroAI 2026" />
+  <meta property="og:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K) from a CroAI 2026 talk." />
+  <meta property="og:url" content="https://vmandic.github.io/from-prompt-to-prod/" />
+  <meta property="og:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From prompt to prod — CroAI 2026" />
+  <meta name="twitter:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K)." />
+  <meta name="twitter:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/photos/croai-title-qr.png" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "From prompt to prod",
+    "description": "Talk on Cursor and agent-style development for dev teams and solo developers.",
+    "startDate": "2026-04-21",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "CroAI"
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Vedran Mandić",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Similarweb"
+      }
+    },
+    "image": [
+      "https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png",
+      "https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-audience.png",
+      "https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-presenter-demo.png"
+    ],
+    "url": "https://vmandic.github.io/from-prompt-to-prod/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site">
+      <a href="index.html" class="site-nav__brand" aria-current="page">From prompt to prod</a>
+      <a href="verify/index.html" class="site-nav__link">Self-check</a>
+      <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf" class="site-nav__link">Slides (PDF)</a>
+      <a href="https://github.com/vmandic/from-prompt-to-prod" class="site-nav__link">Source</a>
+    </nav>
+  </header>
+  <main id="main" class="site-main site-main--home">
+    <article>
+      <h1 class="h1">From prompt to prod</h1>
+      <p class="meta">
+        <time datetime="2026-04-21">21 April 2026</time> · CroAI ·
+        <span>Vedran Mandić — backend engineer at Similarweb</span>
+      </p>
+
+      <section class="takeaways" aria-labelledby="takeaways-heading">
+        <h2 id="takeaways-heading">Takeaways (short version)</h2>
+        <ul>
+          <li>Spend real time on <strong>context</strong>: globs for rules, lean skills, fresh threads for unrelated work.</li>
+          <li>Treat <strong>plan and review</strong> as first-class steps; execution is cheaper when the plan is right.</li>
+          <li>Prefer <strong>scoped automation</strong> (skills, MCPs, scripts you own) over giant always-on rule packs.</li>
+          <li><strong>Verify</strong> everything that touches production paths, credentials, or customer data.</li>
+        </ul>
+      </section>
+
+      <ul class="actions" role="list">
+        <li><a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf">Download slides (PDF)</a></li>
+        <li class="actions__secondary"><a href="verify/index.html">Open the self-check guide (A–K)</a></li>
+        <li class="actions__secondary"><a href="#links">Links from the talk</a></li>
+      </ul>
+
+      <div class="figure-grid">
+        <figure class="figure-hero">
+          <img
+            src="assets/photos/croai-title-qr.png"
+            width="1024"
+            height="819"
+            alt="Slide projected on screen: From prompt to prod, Cursor for dev teams, with a QR code; CroAI April 2026"
+            fetchpriority="high"
+          />
+          <figcaption class="figcaption">Title slide — CroAI, April 2026</figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-grid figure-grid--split">
+        <figure>
+          <img
+            src="assets/photos/croai-audience.png"
+            width="1024"
+            height="819"
+            loading="lazy"
+            alt="Audience seated in an industrial-style event space facing the speaker at CroAI"
+          />
+          <figcaption class="figcaption">Community — CroAI</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="assets/photos/croai-presenter-demo.png"
+            width="1024"
+            height="819"
+            loading="lazy"
+            alt="Presenter at a laptop with a live demo on the main screen"
+          />
+          <figcaption class="figcaption">Live demo</figcaption>
+        </figure>
+      </div>
+
+      <section class="section" id="links" aria-labelledby="links-heading">
+        <h2 id="links-heading">Links mentioned in the slides</h2>
+        <ul class="link-list">
+          <li>
+            <a href="https://github.com/addyosmani/agent-skills">Addy Osmani — agent skills</a>
+            — patterns for packaging reusable agent skills; the deck uses “treat the model like a junior” and plan → act → review.
+          </li>
+          <li>
+            <a href="https://github.com/nedcodes-ok/cursor-doctor">Cursor “doctor” (community)</a>
+            — diagnostics for a Cursor install (not official Cursor support).
+          </li>
+          <li>
+            <a href="https://github.com/nedcodes/i-tested-whether-cursors-auto-mode-actually-picks-the-right-model-20ml">Notes on Cursor Auto mode and model choice</a>
+            — empirical write-up; you still choose model / cost / task fit.
+          </li>
+          <li>
+            <a href="https://github.com/shanraisshan/claude-code-best-practice">Claude Code best practices (community collection)</a>
+            — curated tips for Claude Code and adjacent workflows.
+          </li>
+          <li>
+            <a href="https://github.com/obra/superpowers">Superpowers (Obra)</a>
+            — skills and workflows (TDD, planning, verification) for agentic tools.
+          </li>
+          <li>
+            <a href="https://github.com/MemPalace/mempalace">MemPalace</a>
+            — long-term memory for coding agents; see also the <a href="https://mempalace.github.io/mempalace/guide/mcp-integration.html">MCP integration guide</a>.
+          </li>
+          <li>
+            <a href="https://github.com/runkids/skillshare">Skillshare (runkids)</a>
+            — distribute and sync team skills via git.
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="agent-prompt-heading">
+        <h2 id="agent-prompt-heading">Check your setup against the talk</h2>
+        <p class="subsection">
+          Use the <a href="verify/index.html">full self-check page</a> or the source file
+          <a href="https://github.com/vmandic/from-prompt-to-prod/blob/main/src/verify-your-agentic-workflows.md"><code>src/verify-your-agentic-workflows.md</code></a>
+          as an agent prompt. This materials repo is slide-heavy; for a rich run, use <strong>project</strong> mode on a repo you ship and/or <strong>computer-wide</strong> with real source roots.
+        </p>
+      </section>
+
+      <footer class="contact">
+        <p>
+          <strong>Repo:</strong>
+          <a href="https://github.com/vmandic/from-prompt-to-prod">github.com/vmandic/from-prompt-to-prod</a>
+          · <strong>Contact:</strong> mandic.vedran@gmail.com · @vekzdran, @vmandic
+        </p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

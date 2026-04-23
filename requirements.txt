@@ -1,0 +1,2 @@
+# Build docs/verify/index.html from markdown (no Node required)
+markdown>=3.5
