@@ -165,6 +165,7 @@ def main() -> int:
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{SITE_BASE}/assets/base.css" />
   <link rel="icon" href="{SITE_BASE}/favicon.svg" type="image/svg+xml" />
+  <script src="{SITE_BASE}/assets/verify-toc.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

@@ -188,10 +188,20 @@ a:focus-visible {
   .site-toc-wrap {
     position: sticky;
     top: 3.5rem;
+    z-index: 1;
     align-self: start;
     max-height: calc(100vh - 4rem);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Scrollable but no visible scrollbar (wheel / touch / keyboard still work) */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     padding: 0.5rem 0 0;
+  }
+
+  .site-toc-wrap::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 }
 
@@ -234,6 +244,14 @@ a:focus-visible {
   color: var(--color-link);
   background: color-mix(in srgb, var(--color-accent) 8%, transparent);
   border-left-color: var(--color-accent-2);
+}
+
+/* Current section (scroll-spy, verify-toc.js) */
+.on-this-page__item a.is-active {
+  color: var(--color-link);
+  font-weight: 600;
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  border-left-color: var(--color-accent);
 }
 
 .on-this-page__item--h3 a {
@@ -563,7 +581,80 @@ figure figcaption {
   color: var(--color-muted);
 }
 
+/* Mobile: +20% base type, more breathing room, full-width CTA row on home */
+@media (max-width: 48rem) {
+  html {
+    font-size: 120%;
+  }
+
+  body {
+    line-height: 1.75;
+  }
+
+  .site-nav {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .site-toc-wrap {
+    padding: 0 1.5rem;
+  }
+
+  .site-main {
+    padding: 1.25rem 1.5rem 0;
+  }
+
+  .site-main--home {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  .site-shell--with-toc {
+    padding: 0 0.25rem 2.5rem;
+  }
+
+  .prose .lede {
+    line-height: 1.65;
+  }
+
+  .callout {
+    padding: 0.75rem 1.5rem 0.9rem 1.25rem;
+  }
+
+  .md-body p,
+  .md-body li {
+    line-height: 1.82;
+  }
+
+  .md-body pre {
+    line-height: 1.6;
+  }
+
+  .on-this-page {
+    padding: 0.9rem 0.65rem 0.9rem 0;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .actions li {
+    width: 100%;
+  }
+
+  .actions a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.7rem 1rem;
+  }
+}
+
 @media print {
+  html {
+    font-size: 100%;
+  }
+
   .site-header,
   .on-this-page,
   .actions,
