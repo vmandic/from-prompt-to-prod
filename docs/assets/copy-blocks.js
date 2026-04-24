@@ -25,8 +25,11 @@
     var defaultTitle = btn.getAttribute("title") || "Copy";
 
     function done(ok) {
-      if (ok && typeof window.fptpTrack === "function") {
-        window.fptpTrack("code_copy", { copy_source: copySourceForAnalytics(wrap) });
+      if (ok) {
+        var tr = window.FptpSiteTracking;
+        if (tr && typeof tr.trackEvent === "function") {
+          tr.trackEvent("code_copy", { copy_source: copySourceForAnalytics(wrap) });
+        }
       }
       btn.classList.toggle("copy-block__btn--copied", ok);
       if (wrap) wrap.classList.toggle("copy-block--copied", Boolean(ok));

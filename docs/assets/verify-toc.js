@@ -37,8 +37,9 @@
     const a = ev.target && ev.target.closest ? ev.target.closest('a[href^="#"]') : null;
     if (!a || !nav.contains(a)) return;
     const id = (a.getAttribute("href") || "").slice(1);
-    if (typeof window.fptpTrack === "function") {
-      window.fptpTrack("toc_nav_click", { section_id: id.slice(0, 160) });
+    const tr = window.FptpSiteTracking;
+    if (tr && typeof tr.trackEvent === "function") {
+      tr.trackEvent("toc_nav_click", { section_id: id.slice(0, 160) });
     }
   });
 

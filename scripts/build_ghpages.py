@@ -54,19 +54,12 @@ if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
-ASSET_QUERY = os.environ.get("ASSET_QUERY", "26")
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "27")
 
-# Google Analytics (gtag.js) — injected into <head> on built Pages output
-GTAG_HEAD = """  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2B0R9F8EFJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-2B0R9F8EFJ');
-  </script>
-"""
+# GA4 loader + opt-out API (see docs/assets/site-tracking-control.js). Must run before deferred site JS.
+TRACKING_CONTROL_SCRIPT = (
+    f'  <script src="{SITE_BASE}/assets/site-tracking-control.js?v={ASSET_QUERY}"></script>\n'
+)
 
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
@@ -275,8 +268,7 @@ def main() -> int:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-{GTAG_HEAD}
-  <title>{esc_html(FULL_TITLE)}</title>
+{TRACKING_CONTROL_SCRIPT}  <title>{esc_html(FULL_TITLE)}</title>
   <meta name="description" content="{attr(DESCRIPTION)}" />
   <link rel="canonical" href="{esc_html(CANONICAL)}" />
   <meta property="og:type" content="article" />
@@ -297,6 +289,7 @@ def main() -> int:
   <script src="{SITE_BASE}/assets/verify-toc.js?v={ASSET_QUERY}" defer></script>
   <script src="{SITE_BASE}/assets/copy-blocks.js?v={ASSET_QUERY}" defer></script>
   <script src="{SITE_BASE}/assets/prompt-wizard.js?v={ASSET_QUERY}" defer></script>
+  <script src="{SITE_BASE}/assets/site-cookie-notice.js?v={ASSET_QUERY}" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

@@ -1,16 +1,14 @@
 /**
- * GA4 custom events for the static site. Requires gtag in <head>; no-op if absent.
- * Loaded with defer before other site scripts so fptpTrack exists for their init.
+ * GA4 custom events for the static site. Uses FptpSiteTracking.trackEvent (respects opt-out).
+ * Loaded with defer before other site scripts so the singleton exists.
  */
 (function (w) {
   "use strict";
 
-  function fptpTrack(eventName, params) {
-    if (typeof w.gtag !== "function") return;
-    var p = params && typeof params === "object" ? params : {};
-    w.gtag("event", eventName, p);
+  function track(eventName, params) {
+    var t = w.FptpSiteTracking;
+    if (t && typeof t.trackEvent === "function") t.trackEvent(eventName, params);
   }
-  w.fptpTrack = fptpTrack;
 
   function initNavTracking() {
     var nav = document.querySelector(".site-nav");
@@ -21,7 +19,7 @@
       var href = a.getAttribute("href") || "";
       var label = (a.textContent || "").replace(/\s+/g, " ").trim();
       if (!href) return;
-      fptpTrack("nav_click", {
+      track("nav_click", {
         nav_href: href.slice(0, 240),
         link_text: label.slice(0, 120),
       });
@@ -40,7 +38,7 @@
       if (fired) return;
       fired = true;
       w.removeEventListener("scroll", onScroll, opts);
-      fptpTrack("audit_page_scroll_end", extra || {});
+      track("audit_page_scroll_end", extra || {});
     }
 
     function measure() {

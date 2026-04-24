@@ -1252,3 +1252,137 @@ figure figcaption {
     content: none !important;
   }
 }
+
+/* ----- Cookie / analytics control (fixed lower right) ----- */
+.fptp-cookie-widget {
+  position: fixed;
+  z-index: 9000;
+  right: max(1rem, env(safe-area-inset-right, 0px));
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  pointer-events: none;
+}
+
+.fptp-cookie-widget > * {
+  pointer-events: auto;
+}
+
+.fptp-cookie__fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.fptp-cookie__fab:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.fptp-cookie__fab:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.fptp-cookie__icon {
+  display: block;
+}
+
+.fptp-cookie__panel {
+  position: relative;
+  max-width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem 2.25rem 1rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow);
+}
+
+.fptp-cookie__text {
+  margin: 0 0 0.75rem;
+}
+
+.fptp-cookie__inline-opt {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.fptp-cookie__inline-opt:hover {
+  color: var(--color-link-hover);
+}
+
+.fptp-cookie__inline-opt:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.fptp-cookie__action {
+  display: inline-block;
+  margin-top: 0.35rem;
+  margin-right: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+}
+
+.fptp-cookie__action--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.fptp-cookie__action--primary:hover {
+  filter: brightness(1.05);
+}
+
+.fptp-cookie__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fptp-cookie__close:hover {
+  color: var(--color-ink);
+  background: var(--color-bg);
+}
+
+.fptp-cookie__close:focus-visible {
+  outline: var(--focus);
+  outline-offset: 1px;
+}
