@@ -14,13 +14,18 @@
     var code = pre.querySelector("code");
     var text = code ? code.textContent : pre.textContent;
     var defaultLabel = btn.getAttribute("aria-label") || "Copy to clipboard";
+    var defaultTitle = btn.getAttribute("title") || "Copy";
 
     function done(ok) {
       btn.classList.toggle("copy-block__btn--copied", ok);
+      if (wrap) wrap.classList.toggle("copy-block--copied", Boolean(ok));
       btn.setAttribute("aria-label", ok ? "Copied" : "Copy failed");
+      btn.setAttribute("title", ok ? "Copied!" : "Copy failed");
       window.setTimeout(function () {
         btn.setAttribute("aria-label", defaultLabel);
+        btn.setAttribute("title", defaultTitle);
         btn.classList.remove("copy-block__btn--copied");
+        if (wrap) wrap.classList.remove("copy-block--copied");
       }, ok ? 1800 : 2400);
     }
     function copyViaExecCommand() {

@@ -618,6 +618,30 @@ figure figcaption {
 .copy-block__btn--copied {
   border-color: var(--color-accent);
   color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 16%, var(--color-surface));
+}
+
+/* Clear visual feedback after copy (icon alone was too subtle). */
+.copy-block__btn--copied svg {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.copy-block__btn--copied::after {
+  content: "\2713";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.copy-block.copy-block--copied pre {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
 /* Self-audit: interactive starter prompt wizard */
