@@ -48,7 +48,7 @@ This is how you can **see whether your project and workflow line up** with the p
 
 ### How to self-audit yourself (copy into your agent)
 
-On the **[self-audit page](https://vmandic.github.io/from-prompt-to-prod/self-audit/#prompt-wizard)** there is an **interactive prompt builder** (click choices, type paths only), then you paste the full rubric from [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md) (or its [raw URL on `main`](https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md)) as the next message. Below are **static** templates for GitHub readers without the site: tweak bracketed placeholders, send one block as your first user message, then add the rubric.
+On the **[self-audit page](https://vmandic.github.io/from-prompt-to-prod/self-audit/#prompt-wizard)** there is an **interactive prompt builder** (click choices, type paths only). Paste the generated starter and the full rubric from [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md) (or its [raw URL on `main`](https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md)) into **your usual coding agent** (Cursor, Claude Code, Copilot in the IDE, etc.) **with disk access** so it can scan the paths you gave. A plain web chat with no filesystem will not work. If the rubric is not already in context, send it as the next message after the starter. Below are **static** templates for GitHub readers without the site: tweak bracketed placeholders, send one block as your first user message, then add the rubric.
 
 **Computer-wide (example):**
 
