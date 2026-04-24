@@ -56,6 +56,18 @@ if not SITE_BASE.startswith("/"):
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
 ASSET_QUERY = os.environ.get("ASSET_QUERY", "25")
 
+# Google Analytics (gtag.js) — injected into <head> on built Pages output
+GTAG_HEAD = """  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2B0R9F8EFJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2B0R9F8EFJ');
+  </script>
+"""
+
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
 DESCRIPTION = (
@@ -263,6 +275,7 @@ def main() -> int:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+{GTAG_HEAD}
   <title>{esc_html(FULL_TITLE)}</title>
   <meta name="description" content="{attr(DESCRIPTION)}" />
   <link rel="canonical" href="{esc_html(CANONICAL)}" />
