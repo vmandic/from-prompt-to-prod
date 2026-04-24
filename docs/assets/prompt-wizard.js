@@ -125,16 +125,6 @@
       });
     }
 
-    function syncOtherToolsField() {
-      if (!otherInput) return;
-      var any = false;
-      toolsRoot.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
-        if (cb.checked) any = true;
-      });
-      otherInput.disabled = any;
-      if (any) otherInput.value = "";
-    }
-
     function fillSkills() {
       skillsRoot.innerHTML = "";
       var presets = cfg.skillsPresets || [];
@@ -175,8 +165,11 @@
 
     function toolsPhrase() {
       var ids = selectedToolIds();
-      if (ids.length) return ids.join(", ");
-      return otherInput ? otherInput.value.trim() : "";
+      var extra = otherInput ? otherInput.value.trim() : "";
+      var fromBoxes = ids.length ? ids.join(", ") : "";
+      if (fromBoxes && extra) return fromBoxes + ", " + extra;
+      if (fromBoxes) return fromBoxes;
+      return extra;
     }
 
     function selectedYearPhrase() {
@@ -218,14 +211,11 @@
       );
     }
 
-    toolsRoot.addEventListener("change", syncOtherToolsField);
-
     start.addEventListener("click", function () {
       fillYears();
       fillTools();
       fillSkills();
       setMode(mode);
-      syncOtherToolsField();
       show(panel, true);
       show(start, false);
       if (pathInput) pathInput.focus();
@@ -247,7 +237,7 @@
         if (errEl) {
           text(
             errEl,
-            "Pick at least one daily tool above, or clear them and describe other tools in the text field."
+            "Pick at least one daily tool checkbox, or type your tools in Other tools (or both)."
           );
           show(errEl, true);
         }

@@ -54,7 +54,7 @@ if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
-ASSET_QUERY = os.environ.get("ASSET_QUERY", "22")
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "23")
 
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
@@ -176,9 +176,9 @@ def preface() -> str:
         <div class="prompt-wizard__tools" id="prompt-wizard-tools"></div>
         <p class="prompt-wizard__other-tools-wrap">
           <label class="prompt-wizard__other-tools-label" for="prompt-wizard-other-tools">Other tools</label>
-          <span class="prompt-wizard__other-tools-hint"> (enabled only when none of the boxes above are checked)</span>
+          <span class="prompt-wizard__other-tools-hint"> (optional; you can use this together with the checkboxes)</span>
         </p>
-        <input type="text" class="prompt-wizard__other-tools" id="prompt-wizard-other-tools" autocomplete="off" disabled placeholder="e.g. JetBrains AI Assistant, custom CLI agent" aria-label="Other daily tools, enabled when no checkboxes are selected" />
+        <input type="text" class="prompt-wizard__other-tools" id="prompt-wizard-other-tools" autocomplete="off" placeholder="e.g. JetBrains AI Assistant, custom CLI agent" aria-label="Other daily tools (optional; works alongside checkboxes)" />
       </fieldset>
       <fieldset class="prompt-wizard__fieldset">
         <legend class="prompt-wizard__legend" id="prompt-wizard-years-label">How long do you use agents?</legend>

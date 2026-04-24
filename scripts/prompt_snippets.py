@@ -84,7 +84,7 @@ def copy_block_html(code: str, code_id: str | None = None) -> str:
     )
 
 
-# Wizard: tool ids (order preserved when joining selected). "Other" is a separate text field in the UI when none are checked.
+# Wizard: tool ids (order preserved when joining selected). "Other" is a free-text field; UI may combine it with checked tools.
 WIZARD_TOOLS: list[dict[str, str]] = [
     {"id": "claude", "label": "Claude Code"},
     {"id": "cursor", "label": "Cursor"},
