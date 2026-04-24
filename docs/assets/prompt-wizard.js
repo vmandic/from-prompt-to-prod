@@ -210,6 +210,9 @@
     }
 
     start.addEventListener("click", function () {
+      if (typeof window.fptpTrack === "function") {
+        window.fptpTrack("prompt_wizard_start", {});
+      }
       fillYears();
       fillTools();
       fillSkills();
@@ -244,6 +247,14 @@
       var out = compose();
       text(outCode, out);
       show(result, true);
+      if (typeof window.fptpTrack === "function") {
+        var skillRd = skillsRoot.querySelector('input[name="prompt-wizard-skills"]:checked');
+        window.fptpTrack("prompt_wizard_generate", {
+          wizard_mode: mode,
+          tools_count: selectedToolIds().length,
+          skills_preset: skillRd ? String(skillRd.value).slice(0, 64) : "",
+        });
+      }
       if (live) text(live, "Starter prompt generated. Use Copy to place it in your agent.");
       try {
         outCode.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -253,6 +264,15 @@
     });
 
     setMode("computer");
+
+    var exDetails = document.querySelector(".prompt-wizard__examples-details");
+    if (exDetails && typeof window.fptpTrack === "function") {
+      exDetails.addEventListener("toggle", function () {
+        if (exDetails.open) {
+          window.fptpTrack("prompt_wizard_examples_open", {});
+        }
+      });
+    }
   }
 
   if (document.readyState === "loading") {

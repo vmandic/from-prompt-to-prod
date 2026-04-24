@@ -33,6 +33,15 @@
   const nav = document.querySelector("#site-toc .on-this-page");
   if (!nav) return;
 
+  nav.addEventListener("click", function (ev) {
+    const a = ev.target && ev.target.closest ? ev.target.closest('a[href^="#"]') : null;
+    if (!a || !nav.contains(a)) return;
+    const id = (a.getAttribute("href") || "").slice(1);
+    if (typeof window.fptpTrack === "function") {
+      window.fptpTrack("toc_nav_click", { section_id: id.slice(0, 160) });
+    }
+  });
+
   /** Pixels under sticky header for “which heading is current” (aligns with --site-toc-sticky-top + small gutter). */
   const SCROLL_SPY_GUTTER_PX = 8;
 

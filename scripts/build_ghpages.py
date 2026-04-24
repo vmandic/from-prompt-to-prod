@@ -54,7 +54,7 @@ if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
-ASSET_QUERY = os.environ.get("ASSET_QUERY", "25")
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "26")
 
 # Google Analytics (gtag.js) — injected into <head> on built Pages output
 GTAG_HEAD = """  <!-- Google tag (gtag.js) -->
@@ -293,6 +293,7 @@ def main() -> int:
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{SITE_BASE}/assets/base.css?v={ASSET_QUERY}" />
   <link rel="icon" href="{SITE_BASE}/favicon.svg" type="image/svg+xml" />
+  <script src="{SITE_BASE}/assets/site-analytics.js?v={ASSET_QUERY}" defer></script>
   <script src="{SITE_BASE}/assets/verify-toc.js?v={ASSET_QUERY}" defer></script>
   <script src="{SITE_BASE}/assets/copy-blocks.js?v={ASSET_QUERY}" defer></script>
   <script src="{SITE_BASE}/assets/prompt-wizard.js?v={ASSET_QUERY}" defer></script>

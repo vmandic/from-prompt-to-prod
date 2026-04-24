@@ -6,6 +6,14 @@
 (function () {
   "use strict";
 
+  function copySourceForAnalytics(wrap) {
+    if (!wrap) return "unknown";
+    if (wrap.closest("#prompt-wizard-result")) return "generated_prompt";
+    if (wrap.closest(".prompt-wizard__examples-inner")) return "example_prompt";
+    if (wrap.closest(".md-body")) return "rubric";
+    return "other";
+  }
+
   function copyFromButton(btn) {
     var wrap = btn.closest(".copy-block");
     if (!wrap) return;
@@ -17,6 +25,9 @@
     var defaultTitle = btn.getAttribute("title") || "Copy";
 
     function done(ok) {
+      if (ok && typeof window.fptpTrack === "function") {
+        window.fptpTrack("code_copy", { copy_source: copySourceForAnalytics(wrap) });
+      }
       btn.classList.toggle("copy-block__btn--copied", ok);
       if (wrap) wrap.classList.toggle("copy-block--copied", Boolean(ok));
       btn.setAttribute("aria-label", ok ? "Copied" : "Copy failed");

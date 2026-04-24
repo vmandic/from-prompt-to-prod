@@ -31,6 +31,7 @@ class TestGhpagesBuild(unittest.TestCase):
 
     def test_audit_page_markers(self) -> None:
         text = AUDIT_HTML.read_text(encoding="utf-8")
+        self.assertIn("site-analytics.js?v=", text)
         self.assertIn("verify-toc.js?v=", text)
         self.assertIn("base.css?v=", text)
         self.assertIn("site-toc-scroll", text)
