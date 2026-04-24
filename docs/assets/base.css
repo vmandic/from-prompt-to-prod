@@ -1175,6 +1175,14 @@ figure figcaption {
     text-align: center;
     padding: 0.7rem 1rem;
   }
+
+  .prompt-wizard__start,
+  .prompt-wizard__generate {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
 }
 
 @media print {
