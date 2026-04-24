@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verify your agentic workflows — From prompt to prod</title>
+  <meta name="description" content="Rubric and process: compare your Cursor and agentic setup to the From prompt to prod talk (A–K dimensions). For use as an agent prompt; bounded scans, no secret paste." />
+  <link rel="canonical" href="https://vmandic.github.io/from-prompt-to-prod/self-audit/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Verify your agentic workflows — From prompt to prod" />
+  <meta property="og:description" content="Rubric and process: compare your Cursor and agentic setup to the From prompt to prod talk (A–K dimensions). For use as an agent prompt; bounded scans, no secret paste." />
+  <meta property="og:url" content="https://vmandic.github.io/from-prompt-to-prod/self-audit/" />
+  <meta property="og:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Verify your agentic workflows — From prompt to prod" />
+  <meta name="twitter:description" content="Rubric and process: compare your Cursor and agentic setup to the From prompt to prod talk (A–K dimensions). For use as an agent prompt; bounded scans, no secret paste." />
+  <meta name="twitter:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/from-prompt-to-prod/assets/base.css?v=21" />
+  <link rel="icon" href="/from-prompt-to-prod/favicon.svg" type="image/svg+xml" />
+  <script src="/from-prompt-to-prod/assets/verify-toc.js?v=21" defer></script>
+  <script src="/from-prompt-to-prod/assets/copy-blocks.js?v=21" defer></script>
+  <script src="/from-prompt-to-prod/assets/prompt-wizard.js?v=21" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-shell site-shell--with-toc">
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Site">
+        <a href="/from-prompt-to-prod/" class="site-nav__brand">From prompt to prod</a>
+        <a href="/from-prompt-to-prod/self-audit/" class="site-nav__link" aria-current="page">Self-audit</a>
+        <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf" class="site-nav__link">Slides (PDF)</a>
+        <a href="https://github.com/vmandic/from-prompt-to-prod" class="site-nav__link">Source</a>
+      </nav>
+    </header>
+    <aside class="site-toc-wrap" id="site-toc">
+      <div class="site-toc-scroll">
+        <nav class="on-this-page" aria-labelledby="on-this-page-label">
+  <p class="on-this-page__title" id="on-this-page-label">On this page</p>
+  <ol>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#overview">Overview</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#mandatory-user-questions-ask-if-not-already-answered">Mandatory user questions (ask if not already answered)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#plan-then-research-chief-coordinator">Plan, then research (chief coordinator)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#default-home-global-locations-to-check">Default home &amp; global locations to check</a></li>
+    <li class="on-this-page__item on-this-page__item--h3"><a href="#cross-platform-typical">Cross-platform (typical)</a></li>
+    <li class="on-this-page__item on-this-page__item--h3"><a href="#why-this-is-here">Why this is here</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#where-do-you-keep-source-code">Where do you keep source code?</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#bounded-scanning-source-roots">Bounded scanning (source roots)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#when-to-use-and-not">When to use (and not)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#assessing-slide-or-doc-only-repositories">Assessing “slide- or doc-only” repositories</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#workflow-for-the-agent-phases-updated">Workflow for the agent (phases, updated)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#best-practice-anchors-mandatory-injection-ak">Best practice anchors (mandatory injection, A–K)</a></li>
+    <li class="on-this-page__item on-this-page__item--h3"><a href="#references-readme">References (README)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#map-talk-outline-rubric-rows">Map: talk outline → rubric rows</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#per-dimension-block-all-of-ak">Per-dimension block (all of A–K)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#security-and-secrets-strict">Security and secrets (strict)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#anti-patterns-for-the-responding-agent">Anti-patterns (for the responding agent)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#response-template-mandatory-structure">Response template (mandatory structure)</a></li>
+    <li class="on-this-page__item on-this-page__item--h2"><a href="#scope-what-this-is-and-is-not">Scope: what this is and is not</a></li>
+  </ol>
+</nav>
+      </div>
+    </aside>
+    <main id="main" class="site-main site-main--audit">
+      <article class="prose">
+        <h1 class="prose__title">Verify your agentic workflows</h1>
+        <p class="lede">Self-audit against the talk. Compare what an agent can observe to these practices: context, agent loop, tooling, and safety.</p>
+        <section class="callout callout--cta" aria-labelledby="self-audit-heading">
+  <h2 id="self-audit-heading">How to self-audit yourself</h2>
+  <p class="callout__lede">
+    Use the <strong>prompt builder</strong> below to generate a starter message (click choices; type only your path), then paste the
+    <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md">full rubric</a>
+    as the next user message if your client did not already load it. The rubric tells the agent how to plan, scan, and report A–K.
+  </p>
+  <div id="prompt-wizard" class="prompt-wizard" role="group" aria-labelledby="prompt-wizard-title">
+    <h3 id="prompt-wizard-title" class="prompt-wizard__title">Build your starter prompt</h3>
+    <p class="prompt-wizard__intro">Choose computer-wide or one project, pick tools and presets, type your source path, then generate and copy.</p>
+    <button type="button" class="prompt-wizard__start" id="prompt-wizard-start">Start</button>
+    <div class="prompt-wizard__panel" id="prompt-wizard-panel" hidden>
+      <fieldset class="prompt-wizard__fieldset">
+        <legend class="prompt-wizard__legend">Mode</legend>
+        <div class="prompt-wizard__mode" role="group" aria-label="Audit mode">
+          <button type="button" class="prompt-wizard__mode-btn prompt-wizard__mode-btn--active" id="prompt-wizard-mode-cw" data-mode="computer" aria-pressed="true">Computer-wide</button>
+          <button type="button" class="prompt-wizard__mode-btn" id="prompt-wizard-mode-proj" data-mode="project" aria-pressed="false">Project only</button>
+        </div>
+        <p class="prompt-wizard__mode-hint" id="prompt-wizard-mode-hint">Audit across your machine; put your usual source root (e.g. <code>$HOME/work</code>) in the path field.</p>
+      </fieldset>
+      <fieldset class="prompt-wizard__fieldset">
+        <legend class="prompt-wizard__legend" id="prompt-wizard-path-label">Source path</legend>
+        <input type="text" class="prompt-wizard__path" id="prompt-wizard-path" autocomplete="off" placeholder="$HOME/work, or several roots (spaces or commas)" aria-labelledby="prompt-wizard-path-label" />
+      </fieldset>
+      <fieldset class="prompt-wizard__fieldset">
+        <legend class="prompt-wizard__legend">Daily tools</legend>
+        <div class="prompt-wizard__tools" id="prompt-wizard-tools"></div>
+        <p class="prompt-wizard__other-tools-wrap">
+          <label class="prompt-wizard__other-tools-label" for="prompt-wizard-other-tools">Other tools</label>
+          <span class="prompt-wizard__other-tools-hint"> (enabled only when none of the boxes above are checked)</span>
+        </p>
+        <input type="text" class="prompt-wizard__other-tools" id="prompt-wizard-other-tools" autocomplete="off" disabled placeholder="e.g. JetBrains AI Assistant, custom CLI agent" aria-label="Other daily tools, enabled when no checkboxes are selected" />
+      </fieldset>
+      <fieldset class="prompt-wizard__fieldset">
+        <legend class="prompt-wizard__legend" id="prompt-wizard-years-label">How long do you use agents?</legend>
+        <div class="prompt-wizard__years prompt-wizard__years--radios" id="prompt-wizard-years" role="radiogroup" aria-labelledby="prompt-wizard-years-label"></div>
+      </fieldset>
+      <fieldset class="prompt-wizard__fieldset">
+        <legend class="prompt-wizard__legend">Agent skills and MCPs</legend>
+        <div class="prompt-wizard__presets" id="prompt-wizard-skills"></div>
+      </fieldset>
+      <p class="prompt-wizard__err" id="prompt-wizard-err" role="alert" hidden></p>
+      <button type="button" class="prompt-wizard__generate" id="prompt-wizard-generate">Generate prompt</button>
+      <div class="prompt-wizard__postgen">
+        <p class="prompt-wizard__disclaimer">
+          <strong>Privacy:</strong> this is a client-side prompt generator. Nothing you type or select is sent anywhere; it only builds text in your browser.
+        </p>
+        <p class="prompt-wizard__disclaimer">
+          If you want a ready-made example instead, expand <strong>Example prompts</strong> and copy a template, then edit it to match your setup (computer-wide vs project-only).
+        </p>
+        <details class="prompt-wizard__examples-details">
+          <summary class="prompt-wizard__examples-summary">Example prompts</summary>
+          <div class="prompt-wizard__examples-inner">
+            <p class="prompt-wizard__examples-h"><strong>Computer-wide</strong> (bracketed placeholders)</p>
+<div class="copy-block">
+  <button type="button" class="copy-block__btn" aria-label="Copy to clipboard" title="Copy">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <pre><code>This is an agentic workflows and daily use auditing task based on presentation &quot;From prompt to prod&quot;. Audit me computer-wide. My code lives under [$HOME/dir]. I use [claude, cursor, copilot] daily for [N] years. Agent skills / MCPs: [skills/MCP usage]. Paste the full rubric from https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md as your user message (or fetch that URL), then follow it: plan T1+T2 first, bounded scans only, structured A–K report, no secret values in the output.</code></pre>
+</div>
+
+            <p class="prompt-wizard__examples-h"><strong>Project only</strong> (same body; set the path to your checkout)</p>
+<div class="copy-block">
+  <button type="button" class="copy-block__btn" aria-label="Copy to clipboard" title="Copy">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <pre><code>This is an agentic workflows and daily use auditing task based on presentation &quot;From prompt to prod&quot;. In project mode only. My code lives under [$HOME/dir]. I use [claude, cursor, copilot] daily for [N] years. Agent skills / MCPs: [skills/MCP usage]. Paste the full rubric from https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md as your user message (or fetch that URL), then follow it: plan T1+T2 first, bounded scans only, structured A–K report, no secret values in the output.</code></pre>
+</div>
+
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="prompt-wizard__result" id="prompt-wizard-result" hidden>
+      <p class="prompt-wizard__result-label">Your starter message</p>
+      <div class="copy-block">
+  <button type="button" class="copy-block__btn" aria-label="Copy to clipboard" title="Copy">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <pre><code id="prompt-wizard-output-code"></code></pre>
+</div>
+
+    </div>
+    <p class="prompt-wizard__live" id="prompt-wizard-live" aria-live="polite"></p>
+  </div>
+  <script type="application/json" id="prompt-wizard-data">{"openingComputerWide": "This is an agentic workflows and daily use auditing task based on presentation \"From prompt to prod\". Audit me computer-wide. ", "openingProject": "This is an agentic workflows and daily use auditing task based on presentation \"From prompt to prod\". In project mode only. ", "rubricRawUrl": "https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md", "bodyTemplate": "My code lives under __DIR__. I use __TOOLS__ daily for __N_YEARS__. Agent skills / MCPs: __SKILLS_MCP__. Paste the full rubric from __RUBRIC_URL__ as your user message (or fetch that URL), then follow it: plan T1+T2 first, bounded scans only, structured A\u2013K report, no secret values in the output.", "tools": [{"id": "claude", "label": "Claude Code"}, {"id": "cursor", "label": "Cursor"}, {"id": "copilot", "label": "GitHub Copilot"}, {"id": "codex", "label": "OpenAI Codex / ChatGPT coding"}, {"id": "openclaw", "label": "OpenClaw"}, {"id": "windsurf", "label": "Windsurf"}], "years": [{"value": "newbie", "label": "Total newbie", "phrase": "only days or weeks so far (total newbie)"}, {"value": "lt1", "label": "Less than 1 year", "phrase": "less than 1 year"}, {"value": "gt1", "label": "More than 1 year", "phrase": "over 1 year"}, {"value": "gt3", "label": "More than 3 years", "phrase": "more than 3 years"}], "skillsPresets": [{"id": "heavy", "label": "Heavy", "text": "heavy daily use; many packaged agent skills and several MCP integrations"}, {"id": "moderate", "label": "Moderate", "text": "moderate use; some skills and a few MCP tools when tasks need them"}, {"id": "light", "label": "Light", "text": "light use; occasional skills, rarely MCPs"}, {"id": "minimal", "label": "Minimal", "text": "minimal; mostly defaults, almost no MCPs"}, {"id": "none", "label": "None / unsure", "text": "none or not sure yet"}]}</script>
+</section>
+<section class="callout" aria-label="How to use this page">
+  <h2>How to use this page</h2>
+  <ol>
+    <li><strong>Paste</strong> the <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md">source markdown</a> (or the file from this repo) as a <strong>user message</strong> in your AI coding agent.</li>
+    <li><strong>Choose</strong> <em>computer-wide</em> or <em>project</em> mode and answer the mandatory questions (source roots for machine-wide runs).</li>
+    <li><strong>Get</strong> a structured A–K report with anchors, evidence, and concrete next steps—no secret values in the output.</li>
+  </ol>
+</section>
+
+        <div class="md-body">
+<p>This prompt is sourced from: https://vmandic.github.io/from-prompt-to-prod</p>
+<h2 id="overview">Overview</h2>
+<p>Use this file as a <strong>user message</strong> or <strong>system add-on</strong> for any AI coding agent. The analysis can be <strong>computer-wide</strong> (how you use AI across your machine) or <strong>project-scoped</strong> (one tree). The agent compares what it can observe to <em>From prompt to prod</em> (Cursor, LLM context, agentic loops, tooling, and safety).</p>
+<p><strong>Non-negotiable:</strong> A <strong>computer-wide</strong> run must <strong>not</strong> be a list of “not observable” for every row. The agent must <strong>(1)</strong> <a href="#plan-then-research-chief-coordinator">plan and parallelize research</a> (subagents or clustered passes), <strong>(2)</strong> <a href="#where-do-you-keep-source-code">scan agreed locations</a> including <strong>user source roots</strong> and <strong>standard</strong> editor/agent config dirs, and <strong>(3)</strong> for <strong>every</strong> dimension A–K, output a <strong><a href="#best-practice-anchors-mandatory-injection-ak">best practice from the talk</a></strong> line plus your evidence—so the user always gets <strong>actionable</strong> steering.</p>
+<p><strong>Two modes (pick one per run):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What it emphasizes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Computer-wide</strong></td>
+<td>Fingerprint of <strong>how you work machine-wide</strong>: home-level configs (Cursor, Claude, Copilot, Codex, …) <strong>and</strong> a <strong>sample</strong> of your real projects (from paths <strong>you</strong> give). Rubric A–K each get <strong>evidence</strong> or a <strong>caveat</strong>, never a blank.</td>
+</tr>
+<tr>
+<td><strong>Project</strong></td>
+<td>D–F, G–K grounded in a <strong>concrete</strong> project path (or <strong>this workspace</strong>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authoritative material in this repo (read order):</strong></p>
+<ol>
+<li><a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf"><code>from-promt-to-prod-v2.pdf</code></a> — full deck.  </li>
+<li><a href="https://github.com/vmandic/from-prompt-to-prod/blob/main/README.md">README.md</a> — outline, takeaways, links.  </li>
+</ol>
+<p>This file is a <strong>rubric and process</strong>, not a replacement for the deck. When the rubric and the PDF differ, the <strong>PDF and README win</strong>.</p>
+<p><strong>Cross-OS:</strong> Tables and examples use <strong>Unix-style</strong> paths and shells (<code>~</code>, <code>python3</code>, <code>export</code> / <code>PORT=...</code>). On <strong>cmd</strong> or <strong>PowerShell</strong>, adapt: <strong>NTFS</strong>-safe paths, <code>py</code> / <code>python</code> on <code>PATH</code>, <code>set</code> / <code>$env:...</code> for env vars, and <code>%USERPROFILE%</code> (or an explicit <code>C:\...</code> root) instead of <code>~</code>. <strong>Git Bash</strong> / <strong>MSYS2</strong> often look like a POSIX shell; <strong>WSL</strong> is usually like Linux. Keep the same <em>intent</em>; do not assume everyone has a POSIX shell.</p>
+<hr />
+<h2 id="mandatory-user-questions-ask-if-not-already-answered">Mandatory user questions (ask if not already answered)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>If user already said it in the first message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Computer-wide</strong> or <strong>project</strong> analysis?</td>
+<td>Record verbatim.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Where do you keep your source code?</strong> (one or more directories: e.g. <code>~/dev</code>, <code>~/repos</code>, <code>~/work</code>). <em>These are the roots for </em><em>sampling</em><em> real repos—<code>AGENTS.md</code>, <code>.cursor/</code>, <code>package.json</code>, etc. Not optional for computer-wide unless the user explicitly refuses paths and accepts a weaker, home-only pass—then [Caveat] must say so.</em></td>
+<td>Record paths.</td>
+</tr>
+<tr>
+<td><strong>3</strong> (optional)</td>
+<td>Which <strong>editors/CLI agents</strong> do you use daily? (Cursor, Claude Code, Copilot, Codex, …)</td>
+<td>Merge with <a href="#default-home--global-locations-to-check">what you find on disk</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Project mode:</strong> still ask <strong>(2)</strong> only if you need <strong>one</strong> more repo for comparison; otherwise the <strong>project root</strong> from the user <strong>is</strong> the tree.</p>
+<p><strong>Front-loading (skip questions):</strong> e.g. <em>“Computer-wide, source roots: <code>~/a</code> <code>~/b</code>, home scan OK, project sample <code>~/a/foo</code>”</em>.</p>
+<hr />
+<h2 id="plan-then-research-chief-coordinator">Plan, then research (chief coordinator)</h2>
+<p><strong>The agent running this prompt must not improvise a single long grep.</strong> Before touching files, <strong>write a short plan</strong> with <strong>research tracks</strong> and <strong>subagent boundaries</strong> (or, if the product has no subagents, <strong>sequential</strong> batches with the same split):</p>
+<table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Scope</th>
+<th>What to return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1: Home &amp; global</strong></td>
+<td><a href="#default-home--global-locations-to-check">Default home locations</a></td>
+<td><strong>Which</strong> products appear installed, <strong>list</strong> of config files <em>opened or listed</em> (not secret contents), <strong>MCP</strong> / hooks pointers if in scope</td>
+</tr>
+<tr>
+<td><strong>T2: Source roots</strong></td>
+<td>User’s <code>AGENTS.md</code>, <code>.cursor/</code>, <code>.vscode/</code>, <code>.claude/</code>, <code>pubspec.yaml</code>, <code>package.json</code>, <code>go.mod</code>, <code>pyproject.toml</code>, <code>Makefile</code>, <code>CI</code> dirs—<strong>bounded</strong> (see <a href="#bounded-scanning">Bounded scanning</a>)</td>
+<td><strong>Per-repo</strong> or <strong>per subfolder</strong> evidence for D, E, F, G, K patterns</td>
+</tr>
+<tr>
+<td><strong>T3: Synthesis</strong></td>
+<td>None</td>
+<td>Map findings into A–K using <a href="#best-practice-anchors-mandatory-injection-ak">best practice anchors</a>; fill the <a href="#response-template-mandatory-structure">template</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>With subagents:</strong> dispatch <strong>T1</strong> and <strong>T2</strong> in <strong>parallel</strong> (independent), then merge.  </li>
+<li><strong>Without subagents:</strong> run <strong>T1</strong> then <strong>T2</strong>; do <strong>T3</strong> last. <strong>Never</strong> skip T1 for computer-wide.</li>
+</ul>
+<p>If any track returns empty, <strong>widen</strong> once (e.g. one more subfolder) before declaring “not found”—<strong>then</strong> state <strong>what you tried</strong> under <strong>Caveats</strong>, not a lazy “n/a.”</p>
+<hr />
+<h2 id="default-home-global-locations-to-check">Default home &amp; global locations to check</h2>
+<p>Run <strong><code>test -d</code> / <code>list_dir</code> on these first</strong> (OS varies; use the rows that exist). <strong>Read</strong> only <em>non-secret</em> config: JSON/YAML structure for keys like <code>mcp</code>, <code>model</code>, <code>rules</code>, not tokens.</p>
+<h3 id="cross-platform-typical">Cross-platform (typical)</h3>
+<table>
+<thead>
+<tr>
+<th>Product / use</th>
+<th>Paths (check which exist)</th>
+<th>What to look for (non-secret)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cursor (user config)</strong></td>
+<td><code>~/.cursor/</code></td>
+<td><code>mcp.json</code>, <code>argv.json</code>, <code>ide_state.json</code> names; <code>extensions/</code>; <strong>do not</strong> dump OAuth/session blobs</td>
+</tr>
+<tr>
+<td><strong>Claude (Code / app)</strong></td>
+<td><code>~/.claude/</code>, on macOS also <code>~/Library/Application Support/Claude/</code> (if present)</td>
+<td><code>config.json</code> / <code>settings</code> <strong>keys</strong> only, <code>projects/</code> or cache <strong>names</strong> only</td>
+</tr>
+<tr>
+<td><strong>VS Code + Copilot</strong></td>
+<td><code>~/.vscode/</code> <strong>or</strong> <code>~/.config/Code/</code> <strong>or</strong> macOS <code>~/Library/Application Support/Code/User/</code></td>
+<td><code>settings.json</code> — grep for <code>github.copilot</code>, <code>chat</code>, <code>agent</code>; <code>extensions/**/package.json</code> <strong>names</strong> for <code>copilot</code></td>
+</tr>
+<tr>
+<td><strong>Cursor (macOS app data)</strong></td>
+<td><code>~/Library/Application Support/Cursor/User/</code> (if present)</td>
+<td><code>settings.json</code> similarly; <code>globalStorage</code> <strong>directory names</strong> only if listing helps</td>
+</tr>
+<tr>
+<td><strong>OpenAI / Codex / “Codex” CLI</strong></td>
+<td><code>~/.config/opencode*</code>, <code>~/.codex</code>, <code>~/.openai</code> (if any)</td>
+<td><code>*.json</code> / <code>*.yaml</code> top-level keys; <strong>if</strong> unknown, <strong>list</strong> directory and stop</td>
+</tr>
+<tr>
+<td><strong>Windsurf / other</strong></td>
+<td>user may name; add only if they consent</td>
+<td>same discipline</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> If a file likely contains <strong>refresh tokens</strong> or long base64, <strong>list path + “present”</strong> and <strong>do not</strong> paste the value.</p>
+<h3 id="why-this-is-here">Why this is here</h3>
+<p>A <strong>machine-wide</strong> analysis that never opens <strong>any</strong> of these is <strong>incomplete</strong> unless the user <strong>denied</strong> home access. You must still deliver <strong>D–E</strong> from <strong>user source roots</strong> (T2) so the run is never “empty.”</p>
+<hr />
+<h2 id="where-do-you-keep-source-code">Where do you keep source code?</h2>
+<ul>
+<li><strong>User answers</strong> with 1+ directories (e.g. <code>~/source/vmandic</code>, <code>~/dev</code>). You <strong>scan T2</strong> there with <a href="#bounded-scanning">bounded rules</a>.  </li>
+<li>If the user has <strong>no</strong> code outside the current project, they may name <strong>one</strong> project path; treat as <strong>T2 = that tree only</strong> + T1 = home.  </li>
+<li><strong>Refusal:</strong> If they refuse to name paths, T2 is <strong>weaker</strong>; state under <strong>Caveats</strong>: <em>“No source roots: only T1 and user interview.”</em></li>
+</ul>
+<hr />
+<h2 id="bounded-scanning-source-roots">Bounded scanning (source roots)</h2>
+<p>To avoid exfiltrating the whole machine:</p>
+<ul>
+<li><strong>Depth:</strong> default <strong>4</strong> from each source root; stop early if a large monorepo appears—ask user.  </li>
+<li><strong>Width:</strong> at least <strong>2</strong> and up to <strong>6</strong> “project” candidates: prefer dirs that contain <code>package.json</code> <strong>or</strong> <code>pubspec.yaml</code> <strong>or</strong> <code>go.mod</code> <strong>or</strong> <code>.git</code> at depth ≤2, or the <strong>most recently modified</strong> subdirs the tools expose.  </li>
+<li><strong>Always look for</strong> in each candidate: <code>AGENTS.md</code>, <code>.cursor/</code>, <code>.cursor/mcp.json</code>, <code>.cursorrules</code>, <code>CLAUDE.md</code>, <code>.llm/</code>, <code>mcp.json</code>, <code>.vscode/</code>, <code>.github/workflows/</code>, <code>.env.example</code>, <code>.gitignore</code> patterns for env files.  </li>
+<li><strong>Never</strong> <code>find</code> the entire <code>$HOME</code> without a <strong>stated</strong> root and depth cap.</li>
+</ul>
+<hr />
+<h2 id="when-to-use-and-not">When to use (and not)</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this prompt?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gap analysis</strong> of an app repo</td>
+<td><strong>Project</strong> + path, or <em>this workspace</em></td>
+</tr>
+<tr>
+<td><strong>Machine-level</strong> + <strong>fingerprint of real projects</strong></td>
+<td><strong>Computer-wide</strong> + <strong>source roots</strong> + T1+T2</td>
+</tr>
+<tr>
+<td><strong>Security / compliance</strong> sign-off</td>
+<td><strong>No</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Success looks like:</strong> every A–K row has a <strong>best practice</strong> line + your evidence, subagent-style research done, unknowns in <strong>Caveats</strong>, and an <strong>open</strong> closing.</p>
+<hr />
+<h2 id="assessing-slide-or-doc-only-repositories">Assessing “slide- or doc-only” repositories</h2>
+<p>Materials-only repo: D–E may be N/A to <strong>files</strong>, but the <strong>best practice</strong> lines still print; <em>practice</em> = “N/A: deck repo, principles in README.”</p>
+<hr />
+<h2 id="workflow-for-the-agent-phases-updated">Workflow for the agent (phases, updated)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Goal</th>
+<th>Key actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0. Questions</strong></td>
+<td>Mode + <strong>source root(s)</strong> + tools</td>
+<td><a href="#mandatory-user-questions-ask-if-not-already-answered">Mandatory user questions</a></td>
+</tr>
+<tr>
+<td><strong>0b. Plan</strong></td>
+<td>Parallel research</td>
+<td><a href="#plan-then-research-chief-coordinator">Plan, then research</a> — <strong>write the plan in chat (brief)</strong> then execute T1, T2</td>
+</tr>
+<tr>
+<td><strong>1. Orient</strong></td>
+<td>Rubric A–K + <a href="#best-practice-anchors-mandatory-injection-ak">anchors</a></td>
+<td>Have the map in context</td>
+</tr>
+<tr>
+<td><strong>2. T1</strong></td>
+<td>Home/global</td>
+<td><a href="#default-home--global-locations-to-check">Default home &amp; global locations</a></td>
+</tr>
+<tr>
+<td><strong>3. T2</strong></td>
+<td>Source roots</td>
+<td><a href="#bounded-scanning">Bounded scanning</a></td>
+</tr>
+<tr>
+<td><strong>4. Synthesize</strong></td>
+<td>A–K + template</td>
+<td>For <strong>each</strong> row: anchor + evidence + <a href="#per-dimension-block-all-of-a–k">match verdict</a></td>
+</tr>
+<tr>
+<td><strong>5. Safety pass</strong></td>
+<td><a href="#security-and-secrets-strict">Security</a></td>
+<td>No secret bodies</td>
+</tr>
+<tr>
+<td><strong>6. Close</strong></td>
+<td><a href="#response-template-mandatory-structure">Template</a></td>
+<td>Open <strong>How do you want to proceed?</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="best-practice-anchors-mandatory-injection-ak">Best practice anchors (mandatory injection, A–K)</h2>
+<p><strong>Every</strong> dimension in the final report must include the <strong>short “From the talk”</strong> line below (you may rephrase slightly, same meaning), then the <strong>user’s</strong> situation.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th><strong>Best practice (from the talk) — use as fixed anchor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td><strong>Deliberately</strong> use the AI editor’s workflow: plan mode, diffs, review, optional CLI; be aware of <strong>model choice and cost</strong> (e.g. fast default vs “frontier” planning).</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Build a mental model: context = system + <strong>tools</strong> + <strong>history</strong> + you; <strong>advertised</strong> context ≠ comfortable <strong>headroom</strong>; <strong>pick models for the job</strong>.</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td><strong>Scope</strong> rules; avoid <strong>always-on</strong> bloat; <strong>separate</strong> unrelated work; <strong>track</strong> the window; treat <strong>compaction</strong> as a nudge to <strong>split the thread</strong> or work, not to ignore.</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Short <strong><code>AGENTS.md</code></strong>-style <strong>hub</strong>; <strong>rules</strong> = stable conventions, <strong>skills</strong> = repeatable <strong>actions</strong>; keep <strong>MCP and hooks</strong> <strong>lean</strong>; monorepos: nested <strong><code>.cursor</code></strong> only <strong>on purpose</strong>.</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td><strong>Scope</strong> with globs; default <strong><code>alwaysApply: false</code></strong> unless you mean it; <strong>scripts</strong> in <code>scripts/</code>, not giant inline shell in skills; <strong>tighten</strong> skills with test-like iteration when useful.</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td><strong>MCP</strong> and <strong>hooks</strong> for real integrations; subagents, worktrees, cloud agents, CLIs as skills—<strong>only</strong> when the leverage is clear.</td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td><strong>Plan</strong> before <strong>big</strong> gen; <strong>review</strong> like a <strong>junior’s PR</strong>; <strong>execute</strong> in steps; <strong>verify</strong> (tests, tools, your eyes).</td>
+</tr>
+<tr>
+<td><strong>H</strong></td>
+<td><strong>Precise</strong> when the outcome is known; <strong>a bit open</strong> for exploration; use <strong>@ paths</strong>, symbols, indexed docs.</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td><strong>Parallel</strong> (subagents, worktrees) to <strong>go faster</strong> or <strong>split</strong> context; <strong>do not</strong> force parallel theater.</td>
+</tr>
+<tr>
+<td><strong>J</strong></td>
+<td>Optional: <strong>shared</strong> team skills, <strong>memory</strong> tools (e.g. long-term RAG) where they <strong>earn</strong> their keep.</td>
+</tr>
+<tr>
+<td><strong>K</strong></td>
+<td><strong>Least privilege</strong>; no prod <strong>secrets</strong> in text the model <strong>reads</strong>; <strong>read-only</strong> where possible; <strong>human</strong> in the loop; <strong>branches</strong> / not agents alone on production.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="references-readme">References (README)</h3>
+<ul>
+<li><a href="https://github.com/addyosmani/agent-skills">Addy Osmani — agent skills</a>  </li>
+<li><a href="https://github.com/nedcodes-ok/cursor-doctor">Cursor “doctor” (community)</a>  </li>
+<li><a href="https://github.com/nedcodes/i-tested-whether-cursors-auto-mode-actually-picks-the-right-model-20ml">Auto mode &amp; model (nedcodes)</a>  </li>
+<li><a href="https://github.com/shanraisshan/claude-code-best-practice">Claude Code best practices (community)</a>  </li>
+<li><a href="https://github.com/obra/superpowers">Superpowers (Obra)</a>  </li>
+<li><a href="https://github.com/runkids/skillshare">Skillshare (runkids)</a>  </li>
+</ul>
+<hr />
+<h2 id="map-talk-outline-rubric-rows">Map: talk outline → rubric rows</h2>
+<table>
+<thead>
+<tr>
+<th>Talk section</th>
+<th>Primary IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor in context</td>
+<td>A</td>
+</tr>
+<tr>
+<td>LLMs in the editor</td>
+<td>B, C</td>
+</tr>
+<tr>
+<td>Project setup</td>
+<td>D, E, F</td>
+</tr>
+<tr>
+<td>Agentic loop</td>
+<td>G</td>
+</tr>
+<tr>
+<td>Prompting</td>
+<td>H</td>
+</tr>
+<tr>
+<td>Parallel work</td>
+<td>I, (F)</td>
+</tr>
+<tr>
+<td>Extend toolkit</td>
+<td>F, J</td>
+</tr>
+<tr>
+<td>Trust</td>
+<td>K</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="per-dimension-block-all-of-ak">Per-dimension block (all of A–K)</h2>
+<p>For each row, output in <strong>this order</strong>:</p>
+<ol>
+<li><strong><code>Best practice (from the talk):</code></strong> — copy/paraphrase from the <a href="#best-practice-anchors-mandatory-injection-ak">table</a> (required).  </li>
+<li><strong><code>Your setup (evidence):</code></strong> — <strong>Awareness</strong> / <strong>practice</strong> / <strong>tools</strong> in one tight paragraph or sub-bullets, with <strong>paths</strong> from T1/T2 or “searched [paths], not found.” <strong>Forbidden:</strong> leaving this blank because “not observable” without also stating <strong>where you looked</strong> (T1/T2 or user quote).  </li>
+<li><strong><code>How this matches the talk</code>:</strong> <strong>align</strong> / <strong>partial</strong> / <strong>misaligned</strong> + one <strong>concrete</strong> reason.  </li>
+<li><strong><code>Gap after search</code> (if any):</strong> <em>what</em> was still unknown or not found after T1/T2, or <strong>“none”</strong> if the evidence was enough for this row. <strong>Always</strong> one line minimum (even “N/A: fully covered”).  </li>
+<li><strong><code>Suggested resolution or improvement</code> (required every row):</strong> If <strong>align</strong> and no real gap, write <strong>“None needed for visible scope”</strong> or at most one <strong>optional</strong> polish. If <strong>partial</strong> or <strong>misaligned</strong> or a <strong>gap</strong> line exists, give <strong>1–3 concrete</strong> next steps: things to add/change/try (e.g. “add a one-line <code>AGENTS.md</code> pointer to <code>.llm/rules</code>,” “tighten <code>alwaysApply</code> on rule X,” “turn on branch protection for <code>main</code>,” “add <code>.env</code> to globalcursorignore,” “pilot one worktree for hotfixes,” “document model choice in team README”)—<strong>grounded in the <a href="#best-practice-anchors-mandatory-injection-ak">anchors</a></strong>, not generic life advice. <strong>Never</strong> a single forced prescription; this is a <strong>menu</strong> of small fixes. <strong>Forbidden:</strong> “be more careful” with no file or habit. <strong>Security (K):</strong> never suggest pasting secrets to “verify.”</li>
+</ol>
+<p><em>Terminology:</em> do not duplicate “Reflection” as a different concept—<strong>match</strong> and <strong>evidence</strong> are enough.</p>
+<p><strong>Hints (still not new requirements):</strong> <strong>A</strong> from T1 + user; <strong>B–C</strong> from rules count in T2, settings keys; <strong>D–E</strong> from <code>AGENTS.md</code>, <code>.llm/</code>, glob rules; <strong>F</strong> from mcp, hooks, mempalace files; <strong>G</strong> from <code>plans/</code>, <code>test/</code>, CI; <strong>H</strong> from <code>.llm/prompts</code> or similar; <strong>I</strong> user-asked; <strong>J</strong> from mempalace, skill links; <strong>K</strong> from <code>.gitignore</code>, <code>*.example</code>, <strong>no</strong> secret paste.</p>
+<hr />
+<h2 id="security-and-secrets-strict">Security and secrets (strict)</h2>
+<ul>
+<li><strong>Not</strong> print <strong><code>.env</code></strong>, keys, tokens, long session material.  </li>
+<li><strong>May</strong> name paths, <code>git</code> tracked vs ignored, <strong>file exists</strong>.  </li>
+<li><strong>T1</strong> config files: <strong>structural</strong> flags OK (e.g. <code>mcpServers</code> key exists); not values of secrets.  </li>
+<li><strong>Computer-wide:</strong> T1+T2 are <strong>allowed</strong>; not “inventory entire <code>Downloads</code>” without user.</li>
+</ul>
+<hr />
+<h2 id="anti-patterns-for-the-responding-agent">Anti-patterns (for the responding agent)</h2>
+<table>
+<thead>
+<tr>
+<th>If you do this</th>
+<th>Do this instead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A–K all “not observable” in computer-wide</td>
+<td>Run <strong>T1+T2</strong>; print <strong>anchors</strong> + **“searched <code>path</code>, found</td>
+</tr>
+<tr>
+<td>No <strong>plan</strong> before file reads</td>
+<td><a href="#plan-then-research-chief-coordinator">Plan, then research</a> in chat first</td>
+</tr>
+<tr>
+<td>Skip <strong>ask for source roots</strong> in computer-wide</td>
+<td><a href="#mandatory-user-questions-ask-if-not-already-answered">Mandatory questions</a></td>
+</tr>
+<tr>
+<td>Pasting <strong>secrets</strong> to prove K</td>
+<td><a href="#security-and-secrets-strict">Security</a></td>
+</tr>
+<tr>
+<td>“Best practice” from your head, not the table</td>
+<td>Use <a href="#best-practice-anchors-mandatory-injection-ak">anchors table</a> only</td>
+</tr>
+<tr>
+<td>One next step</td>
+<td><a href="#response-template-mandatory-structure">Template</a> closing: <strong>3–5 options</strong> + question</td>
+</tr>
+<tr>
+<td><strong>Partial/misalign</strong> with <strong>no</strong> “Suggested resolution or improvement”</td>
+<td>Every row <a href="#per-dimension-block-all-of-a–k">requires</a> a suggestion block — use <strong>“None needed”</strong> only when <strong>align</strong> + no gap</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="response-template-mandatory-structure">Response template (mandatory structure)</h2>
+<p>Section headers below use emojis to <strong>mark structure</strong>; keep them in your answer so the report is easy to scan.</p>
+<pre><code class="language-text">## 🧭 Research plan (brief)
+- **Mode:** [computer-wide | project]
+- **T1 (home/global):** [paths checked, in 1-3 lines]
+- **T2 (source root(s)):** [paths checked, depth, how many project candidates]
+- **Parallelism:** [subagents: yes/no — which track each | serial: T1 then T2]
+
+## 📊 Summary
+[3-5 sentences: mode, what was scanned, overall alignment, biggest gap, limits]
+
+## 🎯 Scope and mode
+- **Analysis mode:** [computer-wide | project]
+- **Source root(s) (T2) or &quot;none / refused&quot;:** […]
+- **Project root (if project only):** […]
+- **AI tools (from T1 + user):** […]
+- **Note:** [e.g. &quot;home-only&quot; caveat]
+
+## 🧩 Orientation
+- **Focus type:** […]
+- **User context:** [… or none]
+
+## 🔤 A–K: Dimension notes
+
+For **each** A–K, use **exactly** this sub-structure:
+
+### [ID] [Topic name]
+- **📌 Best practice (from the talk):** [one line from anchor table]
+- **🔍 Your setup (evidence):** [paths, configs, what you read—must cite T1/T2 or &quot;searched X, Y not found&quot;]
+- **⚖️ How this matches the talk:** [align | partial | misaligned] — [one concrete reason]
+- **📭 Gap after search (if any):** [what was still unknown, or &quot;none&quot;]
+- **💡 Suggested resolution or improvement:** [1–3 concrete, deck-tied actions; or &quot;None needed for visible scope&quot; / one optional polish when align]
+
+## 🗺️ Tools and practices from the deck (crosswalk)
+- **Found on disk (paths):** […]
+- **Not found or N/A after search:** [… with what was tried]
+
+## 💪 Strengths
+[…]
+
+## ⚠️ Gaps and risks
+[… — K without values]
+
+## ℹ️ Caveats
+[refusals, unread sensitive files, depth limits, user didn’t name roots]
+
+## 💬 How do you want to proceed?
+[3-5 open options; ask user priority]
+</code></pre>
+<hr />
+<h2 id="scope-what-this-is-and-is-not">Scope: what this is and is not</h2>
+<p><strong>Personal</strong> talk, not product docs. Stay descriptive, kind, and <strong>evidence-bounded</strong>. If ambiguous, <strong>cite the PDF / README</strong> and the <strong>anchor</strong> row.</p>
+<p>When in doubt, stay <strong>boring, precise, and kind</strong>.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
