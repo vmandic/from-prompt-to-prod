@@ -6,7 +6,7 @@ Reads from repo docs/ on every request (no copy) — save CSS/HTML and refresh t
 Run from repo root: python3 scripts/serve_site.py
 Optional: PORT=9000 python3 scripts/serve_site.py
 
-Regenerate verify HTML after editing the markdown: python3 scripts/build_ghpages.py
+Regenerate self-audit HTML after editing the markdown: python3 scripts/build_ghpages.py
 """
 
 from __future__ import annotations

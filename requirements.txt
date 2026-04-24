@@ -1,2 +1,2 @@
-# For scripts/build_ghpages.py — docs/verify from markdown (no Node required)
+# For scripts/build_ghpages.py — docs/self-audit from markdown (no Node required)
 markdown>=3.5

@@ -1,8 +1,8 @@
 /**
- * Self-check page: active TOC link from scroll + keep active link visible in sidebar.
+ * Self-audit page: active TOC link from scroll + keep active link visible in sidebar.
  * Desktop only (min-width: 64em) — on narrow viewports the ToC is hidden; without this,
  * scrollIntoView on hidden ToC links breaks mobile scrolling.
- * No dependencies; only loaded on /verify/
+ * No dependencies; only loaded on /self-audit/ (legacy /verify/ redirects).
  */
 (function () {
   "use strict";
