@@ -623,7 +623,7 @@ figure figcaption {
 /* Self-audit: interactive starter prompt wizard */
 .prompt-wizard {
   margin: 1rem 0 0.5rem;
-  padding: 1rem 1rem 1.1rem;
+  padding: 1rem 1rem 0.55rem;
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg) 40%, var(--color-surface));
@@ -669,6 +669,7 @@ figure figcaption {
 
 .prompt-wizard__panel {
   margin-top: 1rem;
+  padding-bottom: 0;
 }
 
 .prompt-wizard__fieldset {
@@ -832,7 +833,9 @@ figure figcaption {
 
 .prompt-wizard__postgen {
   margin-top: 1.25rem;
+  margin-bottom: 0;
   padding-top: 1rem;
+  padding-bottom: 0;
   border-top: 1px solid var(--color-border);
 }
 
@@ -843,12 +846,18 @@ figure figcaption {
   color: var(--color-muted);
 }
 
+.prompt-wizard__postgen > .prompt-wizard__disclaimer:last-of-type {
+  margin-bottom: 0.35rem;
+}
+
 .prompt-wizard__disclaimer strong {
   color: var(--color-ink);
 }
 
 .prompt-wizard__examples-details {
-  margin: 0.65rem 0 0;
+  margin: 0.45rem 0 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .prompt-wizard__examples-summary {
@@ -858,6 +867,7 @@ figure figcaption {
   cursor: pointer;
   color: var(--color-link);
   list-style-position: outside;
+  margin-bottom: 0;
 }
 
 .prompt-wizard__examples-summary:hover {
@@ -871,8 +881,13 @@ figure figcaption {
 
 .prompt-wizard__examples-inner {
   margin-top: 0.5rem;
+  margin-bottom: 0;
   padding-left: 0.75rem;
   border-left: 2px solid var(--color-border);
+}
+
+.prompt-wizard__examples-inner .copy-block:last-child {
+  margin-bottom: 0.35rem;
 }
 
 .prompt-wizard__examples-h {
@@ -919,10 +934,11 @@ figure figcaption {
 }
 
 .prompt-wizard__live {
-  margin: 0.5rem 0 0;
+  margin: 0.2rem 0 0;
   font-size: 0.82rem;
   color: var(--color-muted);
-  min-height: 1.25em;
+  line-height: 1.35;
+  min-height: 0;
 }
 
 .md-body h2,
