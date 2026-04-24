@@ -1,4 +1,6 @@
-# Verify your agentic workflows (self-check against *From prompt to prod*)
+# Verify your agentic workflows (self-audit against *From prompt to prod*)
+
+This prompt is sourced from: https://vmandic.github.io/from-prompt-to-prod
 
 ## Overview
 
@@ -19,6 +21,8 @@ Use this file as a **user message** or **system add-on** for any AI coding agent
 2. [README.md](../README.md) — outline, takeaways, links.  
 
 This file is a **rubric and process**, not a replacement for the deck. When the rubric and the PDF differ, the **PDF and README win**.
+
+**Cross-OS:** Tables and examples use **Unix-style** paths and shells (`~`, `python3`, `export` / `PORT=...`). On **cmd** or **PowerShell**, adapt: **NTFS**-safe paths, `py` / `python` on `PATH`, `set` / `$env:...` for env vars, and `%USERPROFILE%` (or an explicit `C:\...` root) instead of `~`. **Git Bash** / **MSYS2** often look like a POSIX shell; **WSL** is usually like Linux. Keep the same *intent*; do not assume everyone has a POSIX shell.
 
 ---
 
@@ -213,52 +217,54 @@ For each row, output in **this order**:
 
 ## Response template (mandatory structure)
 
+Section headers below use emojis to **mark structure**; keep them in your answer so the report is easy to scan.
+
 ```text
-## Research plan (brief)
+## 🧭 Research plan (brief)
 - **Mode:** [computer-wide | project]
 - **T1 (home/global):** [paths checked, in 1-3 lines]
 - **T2 (source root(s)):** [paths checked, depth, how many project candidates]
 - **Parallelism:** [subagents: yes/no — which track each | serial: T1 then T2]
 
-## Summary
+## 📊 Summary
 [3-5 sentences: mode, what was scanned, overall alignment, biggest gap, limits]
 
-## Scope and mode
+## 🎯 Scope and mode
 - **Analysis mode:** [computer-wide | project]
 - **Source root(s) (T2) or "none / refused":** […]
 - **Project root (if project only):** […]
 - **AI tools (from T1 + user):** […]
 - **Note:** [e.g. "home-only" caveat]
 
-## Orientation
+## 🧩 Orientation
 - **Focus type:** […]
 - **User context:** [… or none]
 
-## A–K: Dimension notes
+## 🔤 A–K: Dimension notes
 
 For **each** A–K, use **exactly** this sub-structure:
 
 ### [ID] [Topic name]
-- **Best practice (from the talk):** [one line from anchor table]
-- **Your setup (evidence):** [paths, configs, what you read—must cite T1/T2 or "searched X, Y not found"]
-- **How this matches the talk:** [align | partial | misaligned] — [one concrete reason]
-- **Gap after search (if any):** [what was still unknown, or "none"]
-- **Suggested resolution or improvement:** [1–3 concrete, deck-tied actions; or "None needed for visible scope" / one optional polish when align]
+- **📌 Best practice (from the talk):** [one line from anchor table]
+- **🔍 Your setup (evidence):** [paths, configs, what you read—must cite T1/T2 or "searched X, Y not found"]
+- **⚖️ How this matches the talk:** [align | partial | misaligned] — [one concrete reason]
+- **📭 Gap after search (if any):** [what was still unknown, or "none"]
+- **💡 Suggested resolution or improvement:** [1–3 concrete, deck-tied actions; or "None needed for visible scope" / one optional polish when align]
 
-## Tools and practices from the deck (crosswalk)
+## 🗺️ Tools and practices from the deck (crosswalk)
 - **Found on disk (paths):** […]
 - **Not found or N/A after search:** [… with what was tried]
 
-## Strengths
+## 💪 Strengths
 […]
 
-## Gaps and risks
+## ⚠️ Gaps and risks
 [… — K without values]
 
-## Caveats
+## ℹ️ Caveats
 [refusals, unread sensitive files, depth limits, user didn’t name roots]
 
-## How do you want to proceed?
+## 💬 How do you want to proceed?
 [3-5 open options; ask user priority]
 ```
 
