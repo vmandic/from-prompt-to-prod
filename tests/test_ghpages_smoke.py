@@ -9,26 +9,50 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 BUILD = REPO / "scripts" / "build_ghpages.py"
-VERIFY_HTML = REPO / "docs" / "verify" / "index.html"
+AUDIT_HTML = REPO / "docs" / "self-audit" / "index.html"
+LEGACY_VERIFY_REDIRECT = REPO / "docs" / "verify" / "index.html"
 
 
 class TestGhpagesBuild(unittest.TestCase):
-    def test_build_exits_zero(self) -> None:
+    """Build runs once in setUpClass; unittest orders test_* alphabetically, so do not rely on method order."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
         r = subprocess.run(
             [sys.executable, str(BUILD)],
             cwd=str(REPO),
             capture_output=True,
             text=True,
         )
-        self.assertEqual(r.returncode, 0, msg=r.stderr or r.stdout or "build failed")
+        if r.returncode != 0:
+            raise AssertionError(
+                "build_ghpages.py failed:\n" + (r.stderr or r.stdout or "(no output)")
+            )
 
-    def test_verify_page_markers(self) -> None:
-        text = VERIFY_HTML.read_text(encoding="utf-8")
+    def test_audit_page_markers(self) -> None:
+        text = AUDIT_HTML.read_text(encoding="utf-8")
         self.assertIn("verify-toc.js?v=", text)
         self.assertIn("base.css?v=", text)
         self.assertIn("site-toc-scroll", text)
         self.assertIn("site-shell--with-toc", text)
         self.assertIn('id="main"', text)
+        self.assertIn("/self-audit/", text)
+        # Rubric file links must stay absolute GitHub URLs for copy-paste from the page into agents.
+        self.assertIn(
+            "https://github.com/vmandic/from-prompt-to-prod/blob/main/README.md",
+            text,
+        )
+        self.assertIn('class="copy-block"', text)
+        self.assertIn("prompt-wizard.js?v=", text)
+        self.assertIn('id="prompt-wizard"', text)
+        self.assertIn('id="prompt-wizard-data"', text)
+
+    def test_legacy_verify_redirect_page(self) -> None:
+        text = LEGACY_VERIFY_REDIRECT.read_text(encoding="utf-8")
+        self.assertIn("self-audit", text.lower())
+        self.assertIn("http-equiv", text.lower())
+        self.assertIn("refresh", text.lower())
+        self.assertIn("noindex", text.lower())
 
 
 if __name__ == "__main__":
