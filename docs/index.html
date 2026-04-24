@@ -4,22 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>From prompt to prod — CroAI 2026</title>
-  <meta name="description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K) from a CroAI 2026 talk." />
+  <meta name="description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-audit rubric (A–K) from a CroAI 2026 talk." />
   <link rel="canonical" href="https://vmandic.github.io/from-prompt-to-prod/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="From prompt to prod — CroAI 2026" />
-  <meta property="og:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K) from a CroAI 2026 talk." />
+  <meta property="og:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-audit rubric (A–K) from a CroAI 2026 talk." />
   <meta property="og:url" content="https://vmandic.github.io/from-prompt-to-prod/" />
   <meta property="og:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="From prompt to prod — CroAI 2026" />
-  <meta name="twitter:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-check rubric (A–K)." />
+  <meta name="twitter:description" content="Cursor, agent-style development, and shipping from the chat to production. Takeaways, slides PDF, and a self-audit rubric (A–K)." />
   <meta name="twitter:image" content="https://vmandic.github.io/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="/from-prompt-to-prod/assets/photos/croai-title-qr.png" />
-  <link rel="stylesheet" href="/from-prompt-to-prod/assets/base.css" />
+  <link rel="stylesheet" href="/from-prompt-to-prod/assets/base.css?v=21" />
   <link rel="icon" href="/from-prompt-to-prod/favicon.svg" type="image/svg+xml" />
   <script type="application/ld+json">
   {
@@ -55,7 +55,7 @@
   <header class="site-header">
     <nav class="site-nav" aria-label="Site">
       <a href="/from-prompt-to-prod/" class="site-nav__brand" aria-current="page">From prompt to prod</a>
-      <a href="/from-prompt-to-prod/verify/" class="site-nav__link">Self-check</a>
+      <a href="/from-prompt-to-prod/self-audit/" class="site-nav__link">Self-audit</a>
       <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf" class="site-nav__link">Slides (PDF)</a>
       <a href="https://github.com/vmandic/from-prompt-to-prod" class="site-nav__link">Source</a>
     </nav>
@@ -79,10 +79,20 @@
       </section>
 
       <ul class="actions" role="list">
-        <li><a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf">Download slides (PDF)</a></li>
-        <li class="actions__secondary"><a href="/from-prompt-to-prod/verify/">Open the self-check guide (A–K)</a></li>
+        <li><a href="#self-audit">How to self-audit yourself</a></li>
+        <li class="actions__secondary"><a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/from-promt-to-prod-v2.pdf">Download slides (PDF)</a></li>
+        <li class="actions__secondary"><a href="/from-prompt-to-prod/self-audit/">Open the self-audit guide (A–K)</a></li>
         <li class="actions__secondary"><a href="#links">Links from the talk</a></li>
       </ul>
+
+      <section class="section callout callout--cta" id="self-audit" aria-labelledby="self-audit-heading">
+        <h2 id="self-audit-heading">How to self-audit yourself</h2>
+        <p class="callout__lede">
+          On the <a href="/from-prompt-to-prod/self-audit/#prompt-wizard"><strong>self-audit page</strong></a>, use the <strong>prompt builder</strong> (click choices, type only your path), then paste the
+          <a href="https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md">full rubric</a>
+          as the next user message. The same page has the full A–K guide. Offline templates for copy-paste are in the repo <a href="https://github.com/vmandic/from-prompt-to-prod/blob/main/README.md"><code>README.md</code></a>.
+        </p>
+      </section>
 
       <div class="figure-grid">
         <figure class="figure-hero">
@@ -155,11 +165,12 @@
       </section>
 
       <section class="section" aria-labelledby="agent-prompt-heading">
-        <h2 id="agent-prompt-heading">Check your setup against the talk</h2>
+        <h2 id="agent-prompt-heading">Self-audit your setup against the talk</h2>
         <p class="subsection">
-          Use the <a href="/from-prompt-to-prod/verify/">full self-check page</a> or the source file
-          <a href="https://github.com/vmandic/from-prompt-to-prod/blob/main/src/verify-your-agentic-workflows.md"><code>src/verify-your-agentic-workflows.md</code></a>
-          as an agent prompt. This materials repo is slide-heavy; for a rich run, use <strong>project</strong> mode on a repo you ship and/or <strong>computer-wide</strong> with real source roots.
+          Start from the <a href="#self-audit">starter prompts above</a> or open the
+          <a href="/from-prompt-to-prod/self-audit/">full self-audit page</a> (same copy buttons and the A–K rubric). Source file in the repo:
+          <a href="https://github.com/vmandic/from-prompt-to-prod/blob/main/src/verify-your-agentic-workflows.md"><code>src/verify-your-agentic-workflows.md</code></a>.
+          This materials repo is slide-heavy; for a rich run, use <strong>project</strong> mode on a repo you ship and/or <strong>computer-wide</strong> with real source roots.
         </p>
       </section>
 

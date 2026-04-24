@@ -38,13 +38,29 @@ The deck is an honest personal take, not a product pitch. If something sparks an
 
 ---
 
-## Check your setup against the talk (agent prompt)
+## Self-audit your setup against the talk (agent prompt)
 
 This is how you can **see whether your project and workflow line up** with the practices from the presentation Vedran shares—**context**, **agent loop**, **tooling**, and **safety**—in a way any AI assistant can run.
 
 - **File:** [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md) — copy or `@`-reference it in chat. The agent must (1) ask **computer-wide** vs **project**, (2) ask **where you keep source code** (one or more directories) for machine-wide runs so it can **sample** real repos—not just `~`—and (3) **plan** the work and use **subagents** (or serial “tracks”) to split **home/global** config (Cursor, Claude, Copilot, Codex, …) from **project** evidence. Every section A–K includes a **best-practice line from the talk** plus your evidence, so a run is never an empty “not observable” list. Front-load to skip questions, e.g. `computer-wide, source roots ~/dev ~/work, home scan OK`.  
   **Note:** *This* repo is mostly **talk materials** (PDF, README). Project-mode here still yields lots of **“N/A to files”** for D–F; the prompt says how to treat **slide-only** vs **application** repos. For a rich check, use **project** on a repo you ship and/or **computer-wide** with **source roots** you actually use.
 - **What you get back:** a **research plan**, `T1`/`T2` scan notes, per-dimension **anchors + evidence**, crosswalk, caveats, and an **open** closing—still **no** secret values in the output.
+
+### How to self-audit yourself (copy into your agent)
+
+On the **[self-audit page](https://vmandic.github.io/from-prompt-to-prod/self-audit/#prompt-wizard)** there is an **interactive prompt builder** (click choices, type paths only), then you paste the full rubric from [`src/verify-your-agentic-workflows.md`](src/verify-your-agentic-workflows.md) (or its [raw URL on `main`](https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md)) as the next message. Below are **static** templates for GitHub readers without the site: tweak bracketed placeholders, send one block as your first user message, then add the rubric.
+
+**Computer-wide (example):**
+
+```text
+This is an agentic workflows and daily use auditing task based on presentation "From prompt to prod". Audit me computer-wide. My code lives under [$HOME/dir]. I use [claude, cursor, copilot] daily for [N] years. Agent skills / MCPs: [skills/MCP usage]. Paste the full rubric from https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md as your user message (or fetch that URL), then follow it: plan T1+T2 first, bounded scans only, structured A–K report, no secret values in the output.
+```
+
+**Project-only (example):**
+
+```text
+This is an agentic workflows and daily use auditing task based on presentation "From prompt to prod". In project mode only. My code lives under [$HOME/dir]. I use [claude, cursor, copilot] daily for [N] years. Agent skills / MCPs: [skills/MCP usage]. Paste the full rubric from https://raw.githubusercontent.com/vmandic/from-prompt-to-prod/main/src/verify-your-agentic-workflows.md as your user message (or fetch that URL), then follow it: plan T1+T2 first, bounded scans only, structured A–K report, no secret values in the output.
+```
 
 ---
 
