@@ -54,7 +54,7 @@ if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
-ASSET_QUERY = os.environ.get("ASSET_QUERY", "27")
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "28")
 
 # GA4 loader + opt-out API (see docs/assets/site-tracking-control.js). Must run before deferred site JS.
 TRACKING_CONTROL_SCRIPT = (

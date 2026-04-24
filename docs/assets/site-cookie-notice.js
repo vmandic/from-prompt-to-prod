@@ -47,9 +47,18 @@
     var text = d.createElement("div");
     text.className = NS + "__text";
 
+    var actions = d.createElement("div");
+    actions.className = NS + "__actions";
+
+    var optOutBtn = d.createElement("button");
+    optOutBtn.type = "button";
+    optOutBtn.className = NS + "__action " + NS + "__action--secondary";
+    optOutBtn.textContent = "Opt out of analytics";
+
     var optInBtn = d.createElement("button");
     optInBtn.type = "button";
     optInBtn.className = NS + "__action " + NS + "__action--primary";
+    optInBtn.textContent = "Allow analytics cookies";
 
     var close = d.createElement("button");
     close.type = "button";
@@ -57,41 +66,29 @@
     close.setAttribute("aria-label", "Close");
     close.textContent = "\u00d7";
 
-    function wireInlineOptOut() {
-      var inline = text.querySelector("#" + NS + "-inline-opt");
-      if (inline) {
-        inline.addEventListener("click", function () {
-          trackSafe("cookie_notice_opt_out_click", {});
-          track.optOut();
-        });
-      }
-    }
-
     function refreshCopy() {
-      text.textContent = "";
       var allowed = track.isAllowed();
       if (allowed) {
-        text.innerHTML =
-          "Using this site uses <strong>cookies</strong> for anonymous analytics (Google Analytics). " +
-          "If you wish not to use tracking cookies, " +
-          '<button type="button" class="' +
-          NS +
-          '__inline-opt" id="' +
-          NS +
-          '-inline-opt">click here</button>.';
+        text.textContent =
+          "This site uses cookies for anonymous audience measurement (Google Analytics). " +
+          "If you do not want tracking cookies on this site, use Opt out below. Your choice is stored only in this browser.";
+        optOutBtn.hidden = false;
         optInBtn.hidden = true;
-        wireInlineOptOut();
       } else {
         text.textContent =
-          "Analytics tracking is off for this browser. Your choice is saved locally. " +
-          "You can turn analytics cookies back on below.";
+          "Analytics cookies are turned off for this browser. Your choice is saved locally. " +
+          "You can turn anonymous analytics back on if you want.";
+        optOutBtn.hidden = true;
         optInBtn.hidden = false;
-        optInBtn.textContent = "Allow analytics cookies";
       }
     }
 
     refreshCopy();
 
+    optOutBtn.addEventListener("click", function () {
+      trackSafe("cookie_notice_opt_out_click", {});
+      track.optOut();
+    });
     optInBtn.addEventListener("click", function () {
       trackSafe("cookie_notice_opt_in_click", {});
       track.optIn();
@@ -113,9 +110,12 @@
       if (ev.key === "Escape" && !panel.hidden) setOpen(false);
     });
 
+    actions.appendChild(optOutBtn);
+    actions.appendChild(optInBtn);
+
     panel.appendChild(close);
     panel.appendChild(text);
-    panel.appendChild(optInBtn);
+    panel.appendChild(actions);
 
     root.appendChild(panel);
     root.appendChild(toggle);
