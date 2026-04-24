@@ -67,9 +67,7 @@
       if (pathLabel) {
         text(
           pathLabel,
-          isCw
-            ? "Source path (where you keep code; multiple roots: separate with spaces or commas)"
-            : "Project checkout path"
+          isCw ? "Source(s) path" : "Project checkout path"
         );
       }
       if (pathInput) {

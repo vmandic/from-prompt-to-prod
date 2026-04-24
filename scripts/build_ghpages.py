@@ -54,7 +54,7 @@ if not SITE_BASE.startswith("/"):
     SITE_BASE = "/" + SITE_BASE
 
 # Query string so GitHub Pages / browsers pick up new base.css + verify-toc.js after deploy
-ASSET_QUERY = os.environ.get("ASSET_QUERY", "23")
+ASSET_QUERY = os.environ.get("ASSET_QUERY", "24")
 
 TITLE = "Verify your agentic workflows"
 FULL_TITLE = f"{TITLE} — From prompt to prod"
@@ -168,7 +168,7 @@ def preface() -> str:
         <p class="prompt-wizard__mode-hint" id="prompt-wizard-mode-hint">Audit across your machine; put your usual source root (e.g. <code>$HOME/work</code>) in the path field.</p>
       </fieldset>
       <fieldset class="prompt-wizard__fieldset">
-        <legend class="prompt-wizard__legend" id="prompt-wizard-path-label">Source path</legend>
+        <legend class="prompt-wizard__legend" id="prompt-wizard-path-label">Source(s) path</legend>
         <input type="text" class="prompt-wizard__path" id="prompt-wizard-path" autocomplete="off" placeholder="$HOME/work, or several roots (spaces or commas)" aria-labelledby="prompt-wizard-path-label" />
       </fieldset>
       <fieldset class="prompt-wizard__fieldset">
