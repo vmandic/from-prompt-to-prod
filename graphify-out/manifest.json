@@ -1,0 +1,137 @@
+{
+  "docs/assets/copy-blocks.js": {
+    "mtime": 1777062668.5897315,
+    "ast_hash": "67b4a4af5296f41a967416fc95b8b312",
+    "semantic_hash": ""
+  },
+  "docs/assets/prompt-wizard.js": {
+    "mtime": 1777062672.4995477,
+    "ast_hash": "0321c94e544908412bef245d0f1ef91f",
+    "semantic_hash": ""
+  },
+  "docs/assets/site-analytics.js": {
+    "mtime": 1777062667.5548728,
+    "ast_hash": "e39e39990f0334bd149bb4fe5190d053",
+    "semantic_hash": ""
+  },
+  "docs/assets/site-cookie-notice.js": {
+    "mtime": 1777064639.2121174,
+    "ast_hash": "9fb716247f3607dd69681425405a29d4",
+    "semantic_hash": ""
+  },
+  "docs/assets/site-tracking-control.js": {
+    "mtime": 1777062632.5269969,
+    "ast_hash": "c2a7906c8516d05719ea43ac13b5cd36",
+    "semantic_hash": ""
+  },
+  "docs/assets/verify-toc.js": {
+    "mtime": 1777062673.4218497,
+    "ast_hash": "8e86735780cf7600ca6fddc49170268a",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1776976198.48159,
+    "ast_hash": "28667fcac2e3ecf81977fab679a9dcbe",
+    "semantic_hash": ""
+  },
+  "scripts/build_ghpages.py": {
+    "mtime": 1777064644.056125,
+    "ast_hash": "f9c329fbd2477249aafad91723ac10ab",
+    "semantic_hash": ""
+  },
+  "scripts/prompt_snippets.py": {
+    "mtime": 1777025398.5145094,
+    "ast_hash": "dd36d171779b98bd622559942fa6aa78",
+    "semantic_hash": ""
+  },
+  "scripts/serve_site.py": {
+    "mtime": 1777020940.5870798,
+    "ast_hash": "3ab2169dbe83926c29508bb99b7f7ee1",
+    "semantic_hash": ""
+  },
+  "tests/test_ghpages_smoke.py": {
+    "mtime": 1777062707.2066581,
+    "ast_hash": "fe2008c39d401b3bce7157e96892d8de",
+    "semantic_hash": ""
+  },
+  "tests/test_prompt_snippets.py": {
+    "mtime": 1777024424.2793012,
+    "ast_hash": "98c23646237cd7a042a526629dc22bd4",
+    "semantic_hash": ""
+  },
+  ".cursor/plans/Self-audit prompt wizard-d7a40a8c.plan.md": {
+    "mtime": 1777023310.4078667,
+    "ast_hash": "471ba0bd19cc55e8a069ff6b68c38bfd",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1777023657.3380883,
+    "ast_hash": "fc78884979552c5894cf92f25f85b36a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1777025117.6605036,
+    "ast_hash": "4d9bf104a7a69a7ff2eac0c78e613655",
+    "semantic_hash": ""
+  },
+  "docs/index.html": {
+    "mtime": 1777064645.7111733,
+    "ast_hash": "c80fb8cc162900c240650eddd8598e2e",
+    "semantic_hash": ""
+  },
+  "docs/llms.txt": {
+    "mtime": 1777020936.9353714,
+    "ast_hash": "82538347854f6fde6cf8dce54b5aeb3f",
+    "semantic_hash": ""
+  },
+  "docs/robots.txt": {
+    "mtime": 1776953806.4889374,
+    "ast_hash": "1d23316028844f018134b46d55c94030",
+    "semantic_hash": ""
+  },
+  "docs/self-audit/index.html": {
+    "mtime": 1777064650.831512,
+    "ast_hash": "167dfde4943c691facb3a6820892dd43",
+    "semantic_hash": ""
+  },
+  "docs/verify/index.html": {
+    "mtime": 1777021547.5447032,
+    "ast_hash": "6205209a69c1fe2480eb880010639776",
+    "semantic_hash": ""
+  },
+  "requirements.txt": {
+    "mtime": 1777020939.9890177,
+    "ast_hash": "e5ae0f06e9fdf39b3ac19d56c21c3afd",
+    "semantic_hash": ""
+  },
+  "src/verify-your-agentic-workflows.md": {
+    "mtime": 1777024014.28805,
+    "ast_hash": "827662f7507fe4f390525ee16aaaf876",
+    "semantic_hash": ""
+  },
+  "from-promt-to-prod-v2.pdf": {
+    "mtime": 1776780784.594293,
+    "ast_hash": "10135bd5fd041adb52368cc6f4a69455",
+    "semantic_hash": ""
+  },
+  "docs/assets/photos/croai-audience.png": {
+    "mtime": 1776952353.2690501,
+    "ast_hash": "a2004f5fa6c1ca6229f0e965d4b5c298",
+    "semantic_hash": ""
+  },
+  "docs/assets/photos/croai-presenter-demo.png": {
+    "mtime": 1776952353.2707028,
+    "ast_hash": "6643c57e4b4e81a05d545dd17ad22185",
+    "semantic_hash": ""
+  },
+  "docs/assets/photos/croai-title-qr.png": {
+    "mtime": 1776952353.2672555,
+    "ast_hash": "c209a01906802a07d3b1e61fd372769f",
+    "semantic_hash": ""
+  },
+  "docs/favicon.svg": {
+    "mtime": 1776953470.7197862,
+    "ast_hash": "93e135520960098b22ae19e52cc56efd",
+    "semantic_hash": ""
+  }
+}
